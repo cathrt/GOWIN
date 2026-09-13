@@ -1,36 +1,26 @@
-module key (
-    input  wire clk,
-    input  wire rst_n,
-    input  wire [3:0] key_in,   //按键输入，[]
-    output reg  [3:0] key_pluse //按键输出的脉冲
+/*
+按键阵列顶层封装模块
+采用 generate 循环例化，消除手写重复连线与索引笔误
+*/
+module key #(
+    parameter integer KEY_NUM = 4 // 支持任意按键路数扩展
+)(
+    input  wire                 clk,
+    input  wire                 rst_n,
+    input  wire [KEY_NUM-1:0]   key_in,    // 外部按键引脚
+    output wire [KEY_NUM-1:0]   key_pulse  // 对应按键脉冲
 );
 
-    key_debounce  key_debounce_inst1 (
-        .clk(clk),
-        .rst_n(rst_n),
-        .key_in(key_in[0]),
-        .key_pulse(key_pulse[0])
-    );
-
-    key_debounce  key_debounce_inst2 (
-        .clk(clk),
-        .rst_n(rst_n),
-        .key_in(key_in[1]),
-        .key_pulse(key_pulse[1])
-    );
-    
-    key_debounce  key_debounce_inst3 (
-        .clk(clk),
-        .rst_n(rst_n),
-        .key_in(key_in[2]),
-        .key_pulse(key_pulse[2])
-    );
-
-    key_debounce  key_debounce_inst4 (
-        .clk(clk),
-        .rst_n(rst_n),
-        .key_in(key_in[3]),
-        .key_pulse(key_pulse[3])
-    );
+    genvar i;
+    generate
+        for (i = 0; i < KEY_NUM; i = i + 1) begin : gen_key_debounce
+            key_debounce u_key_debounce (
+                .clk       (clk),
+                .rst_n     (rst_n),
+                .key_in    (key_in[i]),
+                .key_pulse (key_pulse[i])
+            );
+        end
+    endgenerate
 
 endmodule
