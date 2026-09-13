@@ -30,7 +30,7 @@ module key (
         .clk(clk),
         .rst_n(rst_n),
         .key_in(key_in[3]),
-        .key_pulse(key_pulse[4])
+        .key_pulse(key_pulse[3])
     );
 
 endmodule
