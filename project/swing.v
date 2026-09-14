@@ -50,7 +50,7 @@ end
 //always @(*) 块内部的阻塞赋值（=）是自上而下顺序执行
 always @(*) begin
     //平常下，维持不变
-    state_next = state_cur;
+    //state_next = state_cur;
     //接收到状态切换条件，切换状态
     case (state_sel)
             2'b11:   state_next = S_LOWER_CW;  // 下半周(1) + 顺时针(1)
