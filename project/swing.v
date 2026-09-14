@@ -29,9 +29,9 @@ localparam signed [15:0] DUTY_BOOST = 16'sd180; // 上半周轻托力 (18.0%)
 //状态判定，4选1MUX
 wire [15:0] abs_angle = (angle_deg > 0) ? angle_deg : -angle_deg; //绝对值
 // 1: 下半周, 0: 上半周
-wire half_angle = (abs_angle > 14'd9000); //绝对值大于90°
+wire half_angle = (abs_angle > 16'd9000); //绝对值大于90°
 // 1: 顺时针，0: 逆时针
-wire half_dir = (angle_vel < 0); //角速度小于0，顺时针
+wire half_dir = (angle_vel <= 0); //角速度小于等于0，顺时针
 wire [1:0] state_sel = {half_angle, half_dir};
 
 reg [1:0]state_cur;  //当前状态
@@ -51,11 +51,12 @@ always @(*) begin
     //平常下，维持不变
     state_next = state_cur;
     //接收到状态切换条件，切换状态
-    case(state_sel)
-        2'b00: state_next = S_LOWER_CW;   //下半周顺时针
-        2'b01: state_next = S_LOWER_CCW;  //下半周逆时针
-        2'b10: state_next = S_UPPER_CW;   //上半周顺时针
-        2'b11: state_next = S_UPPER_CCW;  //上半周逆时针
+    case (state_sel)
+            2'b11:   state_next = S_LOWER_CW;  // 下半周(1) + 顺时针(1)
+            2'b10:   state_next = S_LOWER_CCW; // 下半周(1) + 逆时针(0)
+            2'b01:   state_next = S_UPPER_CW;  // 上半周(0) + 顺时针(1)
+            2'b00:   state_next = S_UPPER_CCW; // 上半周(0) + 逆时针(0)
+            default: state_next = S_LOWER_CW;
     endcase
 end
 
