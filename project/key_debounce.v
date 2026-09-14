@@ -2,17 +2,22 @@
 按键消抖模块
 同步化异步输入，延迟20ms
 */
-module key_debounce (
+module key_debounce #(
+    parameter integer CLK_FREQ = 50_000_000,                 // 50MHz 时钟
+    parameter integer DELAY_MS = 20,                         // 机械延时 20ms
+    parameter integer CNT_MAX  = (CLK_FREQ / 1000) * DELAY_MS // 计数门限 (仿真可直接覆盖此参数)
+)(
     input  wire clk,
     input  wire rst_n,
     input  wire key_in,     // 外部异步按键引脚 (按下为低电平)
     output reg  key_pulse   // 单时钟周期有效脉冲
 );
-
+    /*
     // 计算计数值与寄存器位宽
     localparam integer CLK_FREQ = 50_000_000;   //系统时钟
     localparam integer DELAY_MS = 20;           //机械延时20MS
     localparam integer CNT_MAX  = (CLK_FREQ / 1000) * DELAY_MS; 
+    */
     localparam integer WIDTH    = $clog2(CNT_MAX);
 
     // 1. 打三拍：前两级消除亚稳态，第三级用于捕捉跳变沿

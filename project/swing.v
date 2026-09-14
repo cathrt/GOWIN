@@ -47,6 +47,7 @@ always @(posedge clk or negedge rst_n) begin
 end
 
 //状态转移
+//always @(*) 块内部的阻塞赋值（=）是自上而下顺序执行
 always @(*) begin
     //平常下，维持不变
     state_next = state_cur;
@@ -65,7 +66,7 @@ always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         swing_data <= 16'sd0;
     end else if (angle_active && swing_en) begin
-        case (state_next)
+        case (state_next) //采用下一个状态，消除该状态存入当前状态（时序逻辑）天然产生的一拍延迟
             S_LOWER_CW:  swing_data <= +DUTY_SWING; // 电机正转大推力 (产生向左惯性力)
             S_LOWER_CCW: swing_data <= -DUTY_SWING; // 电机反转大推力 (产生向右惯性力)
             S_UPPER_CW:  swing_data <= -DUTY_BOOST; // 电机反转轻托举 (产生向右惯性力)
