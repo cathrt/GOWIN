@@ -1,3 +1,7 @@
+/*
+按键消抖模块
+同步化异步输入，延迟20ms
+*/
 module key_debounce (
     input  wire clk,
     input  wire rst_n,
