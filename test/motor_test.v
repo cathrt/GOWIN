@@ -3,7 +3,7 @@
 module motor_test;
     reg  clk;
     reg  rst_n;
-    reg  signed [15:0]duty_signed;
+    reg  signed [12:0]duty_signed;
     reg  motor_stop;
     wire ain1;
     wire ain2;
@@ -35,7 +35,7 @@ module motor_test;
     initial begin
 
 	    //初始化
-        duty_signed = 16'sd0;
+        duty_signed = 13'sd0;
         motor_stop = 1'b1;
 
         //等待复位信号
@@ -43,22 +43,22 @@ module motor_test;
 
         //正转50%占空比
         motor_stop = 1'b0;  //电机开启
-        duty_signed = 16'sd1250;
+        duty_signed = 13'sd1250;
         #1_000;
 
         //反转50%占空比
         motor_stop = 1'b0;
-        duty_signed = -16'sd1250;
+        duty_signed = -13'sd1250;
         #1_000;
-
+    /*
         //正转超限
-        duty_signed = 16'sd5000;
+        duty_signed = 13'sd5000;
         #1_000;
 
         //反转超限
-        duty_signed = -16'sd5000;
+        duty_signed = -13'sd5000;
         #1_000;
-
+    */
         //电机关闭
         motor_stop = 1'b1;
         #1_000;

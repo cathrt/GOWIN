@@ -18,11 +18,11 @@ module uart_tx_top#(
     input  wire               uart_en,          // 遥测总开关 (1: 允许发送; 0: 静默)
     input  wire               angle_avtive,     // 500Hz 控制主节拍脉冲 (2ms)
     // 倒立摆实时状态量 (补码原生数据)
-    input  wire signed [15:0] angle_deg,        // 摆杆当前角度
-    input  wire signed [15:0] angle_vel,        // 摆杆角速度
+    input  wire signed [16:0] angle_deg,        // 摆杆当前角度
+    input  wire signed [16:0] angle_vel,        // 摆杆角速度
     input  wire signed [31:0] cur_pos,          // 水平臂位置
     input  wire signed [15:0] cur_speed,        // 水平臂线速度
-    input  wire signed [15:0] duty_signed,      // 占空比力矩
+    input  wire signed [12:0] duty_signed,      // 占空比力矩
     // 物理层引脚
     output wire               tx_data_out       // FPGA 物理串口发送管脚
 );

@@ -8,11 +8,11 @@ module uart_test;
     reg angle_active;
     reg uart_en;
     //数据激励
-    reg signed [15:0] angle_deg;
-    reg signed [15:0] angle_vel;
+    reg signed [16:0] angle_deg;
+    reg signed [16:0] angle_vel;
     reg signed [31:0] cur_pos;
     reg signed [15:0] cur_speed;
-    reg signed [15:0] duty_signed;
+    reg signed [12:0] duty_signed;
     //输出
     wire tx_data_out;
 
@@ -49,8 +49,8 @@ module uart_test;
         rst_n = 1'b0;
         uart_en = 1'b0;
         angle_active = 1'b0;
-        angle_deg = 15'sd0;
-        angle_vel = 15'sd0;
+        angle_deg = 17'sd0;
+        angle_vel = 17'sd0;
         cur_pos = 32'sd0;
         cur_speed = 15'sd0;
         duty_signed = 15'sd0;
@@ -65,8 +65,8 @@ module uart_test;
         for (tick_cnt = 1; tick_cnt <= 12; tick_cnt = tick_cnt + 1) begin
             // 每一个 2ms 更新一次物理姿态参数
             @(negedge clk);
-            angle_deg    <= -16'd500  + tick_cnt * 10;   // 负数补码测试: 0xFE0C
-            angle_vel    <= 16'd1200  + tick_cnt * 5;    // 0x04B0
+            angle_deg    <= -17'd500  + tick_cnt * 10;   // 负数补码测试: 0xFE0C
+            angle_vel    <= 17'd1200  + tick_cnt * 5;    // 0x04B0
             cur_pos      <= 32'd65538 + tick_cnt * 100;  // 0x00010002
             cur_speed    <= -16'd20   + tick_cnt;        // 0xFFEC
             duty_signed  <= 16'd750;                     // 0x02EE

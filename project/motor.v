@@ -3,7 +3,7 @@ module motor(
     input  wire clk,
     input  wire rst_n,
     //输入
-    input  wire signed [15:0] duty_signed, //占空比有符号数
+    input  wire signed [13:0] duty_signed, //占空比有符号数
     input  wire motor_stop,         //电机停止转动标志位
     //输出
     output wire ain1,               //电机驱动A相输入1
