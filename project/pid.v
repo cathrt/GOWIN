@@ -62,8 +62,8 @@ always @(posedge clk or negedge rst_n) begin
         pid_sum <= (pid_p + pid_i + pid_d) << 8;  // 左移8位，即除以256
     end
 end
-
+    
 //输出限制
-assign pid_data = (pid_sum > MUX_OUT) ? MUX_OUT : (pid_sum < MIN_OUT) ? MIN_OUT : pid_sum;
+assign pid_data = (pid_sum > MUX_OUT) ? MUX_OUT : (pid_sum < MIN_OUT) ? MIN_OUT : pid_sum[13:0];
 
 endmodule
