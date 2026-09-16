@@ -16,7 +16,7 @@ module top (
     output wire ain2,
     output wire pwm_out,        //PWM输出，一种占空比变化的周期性信号
     //与LED接口
-    output wire led_out         //LED输出
+    output wire [3:0] led_out         //LED输出
 );
 
 //按键模块
@@ -100,7 +100,7 @@ swing  swing_inst (
 - 内环: 垂直被动摆杆角度环 (纯 PD 控制)
 - 外环: 水平旋转臂位置环 (PID 控制)
 */
-wire signed [12:0] pid_data;  //PID输出的占空比数据
+  wire signed [12:0] pid_data;  //PID输出的占空比数据
 
 pid_double # (
     .KP_ANGLE(KP_ANGLE),
@@ -145,5 +145,9 @@ motor  motor_inst (
     .ain2(ain2),
     .pwm_out(pwm_out)
   );
+
+//led模块
+  assign led[0] = motor_dir[0]; // 电机反转
+  assign led[1] = motor_dir[1]; // 电机正转
 
 endmodule //top

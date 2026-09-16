@@ -1,5 +1,5 @@
 /*
- PID控制器，Y = Kp*p + Ki*i - Kd*d
+ PID控制器，输出 = Kp*err + Ki*i - Kd*diff
 */
 module pid #(
     //参数
@@ -42,6 +42,7 @@ always @(posedge clk or negedge rst_n) begin
                 i <= MAX_I;
             else if ( (i + err) <= MIN_I)
                 i <= MIN_I;
+            //正常积分
             else
                 i <= i + err;
         end
@@ -64,12 +65,15 @@ always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         pid_data <= 13'sd0;
     end else if (!pid_en) begin
+        //在没有使能下，清空输出寄存器化
         pid_data <= 13'sd0;
     end else if (angle_active && pid_en) begin
+        //输出限幅
         if (pid_sum > MAX_OUT)
             pid_data <= MAX_OUT;
         else if (pid_sum < MIN_OUT)
             pid_data <= MIN_OUT;
+        //正常输出，13位
         else
             pid_data <= pid_sum[12:0];
     end
