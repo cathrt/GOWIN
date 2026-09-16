@@ -1,6 +1,6 @@
 module top (
     input  wire clk,
-    input  wire rst_n,
+    input  wire rstn,
     //与ADC接口
     output wire clk_adc,        //驱动ADC的时钟
     output wire adc_oe,         //ADC使能开启
@@ -19,9 +19,17 @@ module top (
     output wire [3:0] led_out         //LED输出
 );
 
-//按键模块
-    localparam KEY_NUM = 4;
-    wire [3:0] key_pluse;   //按键完成单周期脉冲
+// 复位按键 ：异步复位，同步释放
+wire rst_n;
+rst_n_sync  rst_n_sync_inst (
+    .rstn(rstn),
+    .clk(clk),
+    .rst_n(rst_n)
+  );
+
+// 按键模块
+localparam KEY_NUM = 4;
+wire [3:0] key_pluse;   //按键完成单周期脉冲
 key # (
     .KEY_NUM(KEY_NUM)
   )
@@ -32,11 +40,11 @@ key # (
     .key_pulse(key_pulse)
   );
 
-//角度模块
-    wire angle_active;               //角度传播脉冲，2ms
-    wire signed [16:0] angle_deg;    //电机角度
-    wire signed [16:0] angle_vel;    //电机速度
-    wire angle_otr;                  //电机超限的信号
+// 角度模块
+wire angle_active;               //角度传播脉冲，2ms
+wire signed [16:0] angle_deg;    //电机角度
+wire signed [16:0] angle_vel;    //电机速度
+wire angle_otr;                  //电机超限的信号
 angle angle_inst (
     .clk(clk),
     .rst_n(rst_n),
@@ -50,10 +58,10 @@ angle angle_inst (
     .angle_otr(angle_otr)
   );
 
-//编码器模块
-    wire motor_dir;                //电机转向，1正转，0反转
-    wire signed [31:0] cur_pos;    //电机当前位置
-    wire signed [15:0] cur_speed;  //电机当前速度
+// 编码器模块
+wire motor_dir;                //电机转向，1正转，0反转
+wire signed [31:0] cur_pos;    //电机当前位置
+wire signed [15:0] cur_speed;  //电机当前速度
 decode  decode_inst (
     .clk(clk),
     .rst_n(rst_n),
@@ -64,10 +72,12 @@ decode  decode_inst (
     .cur_speed(cur_speed)
   );
 
-//主控模块
-    wire swing_en;      //起摆使能信号
-    wire pid_en;        //PID使能信号
-    wire motor_stop;    //电机停止信号
+// 主控模块
+localparam  ANGLE_LIMIT = 12;
+wire swing_en;      //起摆使能信号
+wire pid_en;        //PID使能信号
+wire motor_stop;    //电机停止信号
+wire signed [31:0] target_angle;  //目标角度
 control # (
     .ANGLE_LIMIT(ANGLE_LIMIT)
   )
@@ -84,8 +94,8 @@ control # (
     .motor_stop(motor_stop)
   );
 
-//起摆模块
-    wire signed [12:0] swing_data;  //起摆输出的占空比数据
+// 起摆模块
+wire signed [12:0] swing_data;  //起摆输出的占空比数据
 swing  swing_inst (
     .clk(clk),
     .rst_n(rst_n),
@@ -100,22 +110,23 @@ swing  swing_inst (
 - 内环: 垂直被动摆杆角度环 (纯 PD 控制)
 - 外环: 水平旋转臂位置环 (PID 控制)
 */
-  wire signed [12:0] pid_data;  //PID输出的占空比数据
-
-pid_double # (
+localparam  KP_ANGLE = 10000;  //角度环比例增益
+localparam  KD_ANGLE = 1000;   //角度环积分增益
+localparam  KP_POS = 10000;   //位置环比例增益
+localparam  KD_POS = 1000;    //位置环积分增益
+wire signed [12:0] pid_data;  //PID输出的占空比数据
+lqr # (
     .KP_ANGLE(KP_ANGLE),
     .KD_ANGLE(KD_ANGLE),
     .KP_POS(KP_POS),
-    .KI_POS(KI_POS),
-    .KD_POS(KD_POS),
-    .MAX_I_POS(MAX_I_POS),
-    .MIN_I_POS(MIN_I_POS)
+    .KD_POS(KD_POS)
   )
-  pid_double_inst (
+  lqr_inst (
     .clk(clk),
     .rst_n(rst_n),
     .pid_en(pid_en),
     .angle_active(angle_active),
+    .target_angle(target_angle),
     .angle_deg(angle_deg),
     .angle_vel(angle_vel),
     .cur_pos(cur_pos),
@@ -123,7 +134,8 @@ pid_double # (
     .pid_data(pid_data)
   );
 
-//2选1 MUX，选择输出起摆还是PID
+// 2选1 MUX，选择输出起摆还是PID
+wire [12:0] duty_signed;  //电机有符号占空比
 always @(*) begin
     if(pid_en) begin
         duty_signed = pid_data;
@@ -134,8 +146,7 @@ always @(*) begin
     end
 end
 
-//电机驱动模块
-    wire [12:0] duty_signed;  //电机有符号占空比
+// 电机驱动模块
 motor  motor_inst (
     .clk(clk),
     .rst_n(rst_n),
@@ -146,8 +157,8 @@ motor  motor_inst (
     .pwm_out(pwm_out)
   );
 
-//led模块
-  assign led[0] = motor_dir[0]; // 电机反转
-  assign led[1] = motor_dir[1]; // 电机正转
+// led模块
+assign led[0] = motor_dir[0]; // 电机反转
+assign led[1] = motor_dir[1]; // 电机正转
 
 endmodule //top
