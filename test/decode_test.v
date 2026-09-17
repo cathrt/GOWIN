@@ -7,7 +7,7 @@ module decode_test;
     reg  encode_b;      //编码器输入B相
     wire encode_pluse;  //4倍频后的脉冲，在此时采集数据
     wire motor_dir;     //电机正反转
-    wire signed [31:0] cur_pos;
+    wire signed [15:0] cur_pos;
 
     parameter K_MOTOR   = 302076;
     parameter MOTOR_MAX = 1_000_000;

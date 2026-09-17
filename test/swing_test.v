@@ -49,22 +49,22 @@ module swing_test;
             case (i)
                 // 状态 0: 下半周 + 顺时针 (|θ| > 90°, vel <= 0) 预期输出 2500 * 0.3  = 750 
                 0: begin
-                    angle_deg = 17'sd30720; // 120° * 256 (下半周)
+                    angle_deg = 17'sd15360; // 120° * 128 (下半周)
                     angle_vel = -17'sd500;  // 顺时针
                 end
                 // 状态 1: 下半周 + 逆时针 (|θ| > 90°, vel >  0) 预期输出 -750
                 1: begin
-                    angle_deg = 17'sd30720; // 120° * 256 (下半周)
+                    angle_deg = 17'sd15360; // 120° * 128 (下半周)
                     angle_vel = 17'sd500;   // 逆时针
                 end
                 // 状态 2: 上半周 + 顺时针 (|θ| <= 90°, vel <= 0) 预期输出 -450
                 2: begin
-                    angle_deg = 17'sd15360;  // 45° * 256 (上半周)
+                    angle_deg = 17'sd5760;  // 45° * 128 (上半周)
                     angle_vel = -17'sd500;  // 顺时针
                 end
                 // 状态 3: 上半周 + 逆时针 (|θ| <= 90°, vel >  0) 预期输出 450 
                 3: begin
-                    angle_deg = 17'sd15360;  // 45° * 256 (上半周)
+                    angle_deg = 17'sd5760;  // 45° * 128 (上半周)
                     angle_vel = 17'sd500;   // 逆时针
                 end
             endcase

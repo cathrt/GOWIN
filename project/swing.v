@@ -4,15 +4,17 @@
 2. 基于 [上/下半周] × [顺/逆时针] 4 选 1 直接查表赋值
 3. 占空比范围为 -2500 ~ 2500
 */
-module swing (
+module swing #(
+    parameter WIDTH_DATA = 32
+) (
     input  wire clk,
     input  wire rst_n,
     //输入使能
     input  wire swing_en,
     //输入的角度信息
     input  wire angle_active,
-    input  wire signed [16:0] angle_deg,
-    input  wire signed [16:0] angle_vel,
+    input  wire signed [WIDTH_DATA:0] angle_deg,
+    input  wire signed [WIDTH_DATA:0] angle_vel,
     //输出
     output reg  signed [12:0] swing_data //后续PWM只需要12位+1位符号
 );
@@ -28,11 +30,12 @@ localparam signed [12:0] DUTY_SWING = 13'sd750; // 下半周大推力  30% 占�
 localparam signed [12:0] DUTY_BOOST = 13'sd450; // 上半周轻托力  18% 占空比 = 2500 * 0.18 = 450 
 
 //状态判定，4选1MUX
-wire [16:0] abs_angle = (angle_deg > 0) ? angle_deg : -angle_deg; //绝对值
+wire [WIDTH_DATA:0] abs_angle = (angle_deg > 0) ? angle_deg : -angle_deg; //绝对值
 // 1: 下半周, 0: 上半周
-wire half_angle = (abs_angle > 17'd23040); //绝对值大于90°，90*256 = 23040
+wire half_angle = (abs_angle > 'd11_520); //绝对值大于90°，90*128 = 11_520
 // 1: 顺时针, 0: 逆时针
 wire half_dir = (angle_vel <= 0); //角速度小于等于0，顺时针
+//组合起来
 wire [1:0] state_sel = {half_angle, half_dir};
 
 //输出寄存器化
