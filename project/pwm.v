@@ -1,26 +1,28 @@
 /*
 PWM波形发生器模块
-将输入的占空比值转换为PWM波形（2值化）输出
-PWM输出频率为20KHz
+1. 将输入的占空比值转换为PWM波形（2值化）输出
+    PWM输出频率为20KHz
+2. 将电机转向与PWM输出同步
 */
-module pwm (
+module pwm #(
+    //PWM周期内最大的系统脉冲数，CLK_F(50MHz) / PWM_F(20KHz)
+    parameter  DUTY_MAX = 2500
+) (
         input  wire clk,
         input  wire rst_n,
         //输入
         input  wire [11:0] duty_unsigned, //无符号占空比
+        input  wire motor_stop, //电机停止信号
         //输出
         output reg   pwm_out       //PWM波形输出
     );
-
-    //PWM周期，CLK_F(50MHz) / PWM_F(20KHz)
-    localparam [11:0]T_PWM = 12'd2500;
 
     //PWM周期基准计数器
     reg [11:0] cnt;
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             cnt <= 12'd0;
-        end else if (cnt < T_PWM - 1) begin
+        end else if (cnt < DUTY_MAX - 1) begin
             cnt <= cnt + 1'b1; //计数器加1
         end else begin
             cnt <= 12'd0; //计数器清零
@@ -40,7 +42,7 @@ module pwm (
 
     //输出端口寄存器化，根据当前计数器值和占空比值，输出PWM波形
     always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
+        if (!rst_n | motor_stop) begin
             pwm_out <= 1'b0;
         end else if (cnt < duty_shadow) begin
             pwm_out <= 1'b1; //计数器小于占空比，输出高电平

@@ -9,7 +9,10 @@ module motor_test;
     wire ain2;
     wire pwm_out;
 
-    motor  uut (
+    motor #(
+        .CLK_F(50_000_000),
+        .PWM_F(1_000_000)
+    ) uut (
     .clk(clk),
     .rst_n(rst_n),
     .duty_signed(duty_signed),
@@ -31,7 +34,7 @@ module motor_test;
         #100 rst_n = 1'b1;
     end
 
-    //测试激励，PWM 周期 本来是 50us( 50_000ns )，现在缩小为 1000ns ，便于观察
+    //测试激励，PWM 周期 本来是50us ，现在缩小为 1000ns(1us) ，便于观察
     initial begin
 
 	    //初始化
