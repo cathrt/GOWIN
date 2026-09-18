@@ -1,7 +1,7 @@
 /*
 LESO
 */
-module leso_3rd_order #(
+module leso #(
     parameter WIDTH_DATA = 32,
     parameter Q_SHIFT    = 16,
 
