@@ -23,7 +23,7 @@ module lqr #(
 ) (
     input  wire clk,
     input  wire rst_n,
-    input  wire lqr_en,
+    input  wire lqr_en,     //lqr开启脉冲，持续高电平
     // 水平摆臂状态输入 (来自编码器计数及T法测速)
     input  wire signed [WIDTH_DATA-1:0] target_arm,      // 水平臂目标位置 0，即回中点
     input  wire signed [WIDTH_DATA-1:0] pos_arm,         // 水平臂当前测量位置，即角度

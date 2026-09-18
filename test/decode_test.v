@@ -27,7 +27,8 @@ module decode_test;
     .motor_dir(motor_dir),
     .cur_pos(cur_pos)
   );
-    decode_speed # (
+    
+  /*decode_speed # (
     .K_MOTOR(K_MOTOR),
     .MOTOR_MAX(MOTOR_MAX)
   )uut3 (
@@ -37,6 +38,7 @@ module decode_test;
     .motor_dir(motor_dir),
     .cur_speed(cur_speed)
   );
+  */
 
   //时钟激励
     initial begin

@@ -33,7 +33,7 @@ localparam signed [12:0] DUTY_BOOST = 13'sd450; // 上半周轻托力  18% 占�
 wire [WIDTH_DATA-1:0] abs_angle = (angle_deg > 0) ? angle_deg : -angle_deg; //绝对值
 
 // 1: 下半周, 0: 上半周
-wire half_angle = (abs_angle > 'd11_520); //绝对值大于90°，90*128 = 11_520
+wire half_angle = (abs_angle > 32'd5_898_240); //绝对值大于90°，90*256*256=
 
 // 1: 顺时针, 0: 逆时针
 wire half_dir = (angle_vel <= 0); //角速度小于等于0，顺时针

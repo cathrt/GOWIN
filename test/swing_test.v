@@ -7,9 +7,9 @@ module swing_test;
     reg  swing_en;
     reg  angle_active;
     //角度信息
-    reg  signed [17:0] angle_deg;
-    reg  signed [17:0] angle_vel;
-    wire signed [17:0] swing_data;
+    reg  signed [31:0] angle_deg;
+    reg  signed [31:0] angle_vel;
+    wire signed [12:0] swing_data;
 
     swing  uut (
     .clk(clk),
@@ -35,8 +35,8 @@ module swing_test;
         rst_n = 1'b0;
         angle_active = 1'b0;
         swing_en = 1'b0;
-        angle_deg = 17'sd0;
-        angle_vel = 17'sd0;
+        angle_deg = 32'sd0;
+        angle_vel = 32'sd0;
         //关闭复位
         #100 rst_n = 1'b1;
         #500;
@@ -49,23 +49,23 @@ module swing_test;
             case (i)
                 // 状态 0: 下半周 + 顺时针 (|θ| > 90°, vel <= 0) 预期输出 2500 * 0.3  = 750 
                 0: begin
-                    angle_deg = 17'sd15360; // 120° * 128 (下半周)
-                    angle_vel = -17'sd500;  // 顺时针
+                    angle_deg = 32'sd7_864_320; // 120° * 256 * 256 (下半周)
+                    angle_vel = -32'sd500;  // 顺时针
                 end
                 // 状态 1: 下半周 + 逆时针 (|θ| > 90°, vel >  0) 预期输出 -750
                 1: begin
-                    angle_deg = 17'sd15360; // 120° * 128 (下半周)
-                    angle_vel = 17'sd500;   // 逆时针
+                    angle_deg = 32'sd7_864_320; // 120° * 128 (下半周)
+                    angle_vel = 32'sd500;   // 逆时针
                 end
                 // 状态 2: 上半周 + 顺时针 (|θ| <= 90°, vel <= 0) 预期输出 -450
                 2: begin
-                    angle_deg = 17'sd5760;  // 45° * 128 (上半周)
-                    angle_vel = -17'sd500;  // 顺时针
+                    angle_deg = 32'sd2_949_120;  // 45° * 128 (上半周)
+                    angle_vel = -32'sd500;  // 顺时针
                 end
                 // 状态 3: 上半周 + 逆时针 (|θ| <= 90°, vel >  0) 预期输出 450 
                 3: begin
-                    angle_deg = 17'sd5760;  // 45° * 128 (上半周)
-                    angle_vel = 17'sd500;   // 逆时针
+                    angle_deg = 32'sd2_949_120;  // 45° * 128 (上半周)
+                    angle_vel = 32'sd500;   // 逆时针
                 end
             endcase
             // 激励角度使能
