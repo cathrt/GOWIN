@@ -102,24 +102,47 @@ lqr # (
     .sat_neg(sat_neg)
   );
 
-// z3角速度 转换成 力
-wire signed [WIDTH_DATA-1:0] z3 = (z3_dist * INV_B0_Q16) >>> 32;
+// 延迟 4 拍 与输出 u_lqr 同步
+// LESO 内部经过了 2拍，LQR 内部也经过了 2拍，共经过了 4拍
+// 我们不是每过4拍就输出一个信号，而是一个2MS周期开始的前 4 拍进行移位，输出一个信号进行同步，其余时间在等待
+reg [3:0] tick_pipe;
+//移位寄存器
+always @(posedge clk or negedge rst_n) begin
+    if (!rst_n) begin
+        tick_pipe <= 4'b0;
+    end else begin
+        tick_pipe <= {tick_pipe[2:0], angle_active};    //右移，每一次2MS周期进行一次
+    end
+end
+wire calc_done = tick_pipe[3]; // 第4拍，此时 LESO 与 LQR 乘加全链路运算完毕
+
+// 将z3_dist(类似加速度) 转化为 力
+wire [WIDTH_DATA*2-1:0] mult_z3 = z3_dist * INV_B0_Q16; // Q32
+// 右移 32 位还原为 Q0 物理推力
+wire signed [WIDTH_DATA-1:0] z3 = mult_z3 >>> 32;       // Q0
 
 // 输出加和
 reg signed [WIDTH_DATA-1:0] u_sum;
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
         u_sum <= 0;
-    end else if(angle_active) begin
+    end else if(!lqr_en) begin
+        u_sum <= 0;
+    end else if(calc_done && lqr_en) begin
+        // 在第 5 拍 进行计算
         u_sum <= u_lqr - z3;
     end
 end
 
-//最终输出23位转化为13位
+//最终输出23位转化为13位，并进行饱和限幅
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
-         u_duty <= 13'sd0;
-    end else begin
+        u_duty <= 13'sd0;
+    end else if(!lqr_en) begin
+        u_duty <= 13'sd0;
+    end else if(calc_done && lqr_en) begin
+        // 在第 5 拍 输出
+        // 饱和限幅，最大32位
         if(u_sum > U_MAX_32) begin   
             u_duty <=  13'sd4095;
         end else if (u_sum < U_MIN_32) begin
@@ -129,12 +152,14 @@ always @(posedge clk or negedge rst_n) begin
         end                     
     end
 end
+
 //LESO 拿到的是真正下发给电机的 13 位值，将他进行拓展
 always @(posedge clk or negedge rst_n) begin
     if (!rst_n) begin
         u_sum_old <= 0;
     end else if (angle_active) begin 
-        u_sum_old <= {{19{u_duty_reg[12]}}, u_duty_reg};  // 13位→32位
+        // 每一个周期都要锁存一次数据
+        u_sum_old <= {{19{u_duty[12]}}, u_duty};  // 13位→32位
     end
 end
 
