@@ -158,7 +158,7 @@ motor  motor_inst (
   );
 
 // led模块
-assign led[0] = motor_dir[0]; // 电机反转
-assign led[1] = motor_dir[1]; // 电机正转
+assign led_out[0] = motor_dir[0]; // 电机反转
+assign led_out[1] = motor_dir[1]; // 电机正转
 
 endmodule //top
