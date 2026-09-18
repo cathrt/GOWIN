@@ -13,8 +13,8 @@ module swing #(
     input  wire swing_en,
     //输入的角度信息
     input  wire angle_active,
-    input  wire signed [WIDTH_DATA:0] angle_deg,
-    input  wire signed [WIDTH_DATA:0] angle_vel,
+    input  wire signed [WIDTH_DATA-1:0] angle_deg,
+    input  wire signed [WIDTH_DATA-1:0] angle_vel,
     //输出
     output reg  signed [12:0] swing_data //后续PWM只需要12位+1位符号
 );
@@ -30,11 +30,14 @@ localparam signed [12:0] DUTY_SWING = 13'sd750; // 下半周大推力  30% 占�
 localparam signed [12:0] DUTY_BOOST = 13'sd450; // 上半周轻托力  18% 占空比 = 2500 * 0.18 = 450 
 
 //状态判定，4选1MUX
-wire [WIDTH_DATA:0] abs_angle = (angle_deg > 0) ? angle_deg : -angle_deg; //绝对值
+wire [WIDTH_DATA-1:0] abs_angle = (angle_deg > 0) ? angle_deg : -angle_deg; //绝对值
+
 // 1: 下半周, 0: 上半周
 wire half_angle = (abs_angle > 'd11_520); //绝对值大于90°，90*128 = 11_520
+
 // 1: 顺时针, 0: 逆时针
 wire half_dir = (angle_vel <= 0); //角速度小于等于0，顺时针
+
 //组合起来
 wire [1:0] state_sel = {half_angle, half_dir};
 

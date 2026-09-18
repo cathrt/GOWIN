@@ -9,8 +9,8 @@ module decode_sync (
     input wire encode_a,    
     input wire encode_b,
     //输出
-    output reg  encode_pluse, //边沿脉冲，电机转一圈产生13*20*4=1040个脉冲，在该脉冲时采集数据
-    output reg  motor_dir     //电机转向，[1]为正转，[0]为反转
+    output reg  encode_pluse, // 边沿脉冲，电机转一圈产生13*20*4=1040个脉冲，在该脉冲时采集数据
+    output reg  motor_dir     // 电机转向，[1]为正转，[0]为反转
 );
 
 //打三拍，前两拍消除亚稳态，第三拍用来记忆电平
@@ -39,7 +39,7 @@ always @(posedge clk or negedge rst_n) begin
     end
 end
 
-//4倍频，即采取A，B相的上升沿和下降沿
+// 4倍频，即采取A，B相的上升沿和下降沿
 wire edge_pluse = (encode_a_r2 ^ encode_a_r3) | (encode_b_r2 ^ encode_b_r3);
 
 // 正反转判定：仅在边沿改变的那 1 拍更新，即有边沿脉冲的那一拍更新，其余时间锁存保持前值

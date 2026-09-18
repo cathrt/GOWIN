@@ -11,12 +11,12 @@ module motor_control #(
         input  wire clk,
         input  wire rst_n,
         //输入
-        input  wire signed [12:0] duty_signed, //占空比有符号数
-        input  wire motor_stop,          //电机停止转动标志位
+        input  wire signed [12:0] duty_signed,  //占空比有符号数
+        input  wire motor_stop,                 //电机停止转动标志位
         //输出
-        output reg  [11:0] duty_unsigned,//占空比无符号数
-        output reg  ain1,                //电机驱动A相输入1
-        output reg  ain2                 //电机驱动A相输入2
+        output reg  [11:0] duty_unsigned,       //占空比无符号数
+        output reg  ain1,                       //电机驱动A相输入1
+        output reg  ain2                        //电机驱动A相输入2
     );
 
     //求绝对值，转化为无符号数：正数取原码，负数取补码（反码+1）

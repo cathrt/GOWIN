@@ -5,7 +5,7 @@
 module key_debounce #(
     parameter integer CLK_FREQ = 50_000_000,                 // 50MHz 时钟
     parameter integer DELAY_MS = 20,                         // 机械延时 20ms
-    parameter integer CNT_MAX  = (CLK_FREQ / 1000) * DELAY_MS // 计数门限 (仿真可直接覆盖此参数)
+    parameter integer CNT_MAX  = (CLK_FREQ / 1000) * DELAY_MS // 计数门限
 )(
     input  wire clk,
     input  wire rst_n,
@@ -21,7 +21,10 @@ module key_debounce #(
     localparam integer WIDTH    = $clog2(CNT_MAX);
 
     // 1. 打三拍：前两级消除亚稳态，第三级用于捕捉跳变沿
-    reg key_r0, key_r1, key_r2;
+    reg key_r0;     //可能有亚稳态，舍弃
+    reg key_r1;     //安全电平
+    reg key_r2;     //历史电平
+    //移位寄存器
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             key_r0 <= 1'b1;
@@ -49,12 +52,12 @@ module key_debounce #(
         end
     end
 
-    // 4. 输出逻辑：在稳定计数满 20ms 的瞬间，若确认为稳定低电平，吐出 1 拍脉冲
+    // 4. 输出逻辑：在稳定计数满 20ms 的瞬间，若确认为稳定低电平，输出 1 拍脉冲
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             key_pulse <= 1'b0;
         end else if (cnt == CNT_MAX - 2'd2 && key_r2 == 1'b0) begin
-            key_pulse <= 1'b1;                  // 精确输出 1 拍
+            key_pulse <= 1'b1; //只输出 1 拍
         end else begin
             key_pulse <= 1'b0;
         end

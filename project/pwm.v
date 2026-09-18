@@ -11,10 +11,10 @@ module pwm #(
         input  wire clk,
         input  wire rst_n,
         //输入
-        input  wire [11:0] duty_unsigned, //无符号占空比
-        input  wire motor_stop, //电机停止信号
+        input  wire [11:0] duty_unsigned,   //无符号占空比
+        input  wire motor_stop,             //电机停止信号
         //输出
-        output reg   pwm_out       //PWM波形输出
+        output reg   pwm_out                //PWM波形输出
     );
 
     //PWM周期基准计数器
@@ -23,9 +23,9 @@ module pwm #(
         if (!rst_n) begin
             cnt <= 12'd0;
         end else if (cnt < DUTY_MAX - 1) begin
-            cnt <= cnt + 1'b1; //计数器加1
+            cnt <= cnt + 1'b1;          //计数器加1
         end else begin
-            cnt <= 12'd0; //计数器清零
+            cnt <= 12'd0;               //计数器清零
         end
     end
 
@@ -45,9 +45,9 @@ module pwm #(
         if (!rst_n | motor_stop) begin
             pwm_out <= 1'b0;
         end else if (cnt < duty_shadow) begin
-            pwm_out <= 1'b1; //计数器小于占空比，输出高电平
+            pwm_out <= 1'b1;        //计数器小于占空比，输出高电平
         end else begin
-            pwm_out <= 1'b0; //计数器大于等于占空比，输出低电平
+            pwm_out <= 1'b0;        //计数器大于等于占空比，输出低电平
         end
     end
 
