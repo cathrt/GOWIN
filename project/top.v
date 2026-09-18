@@ -18,6 +18,9 @@ module top (
     //与LED接口
     output wire [3:0] led_out         //LED输出
 );
+localparam WIDTH_DATA = 32;
+localparam CLK_F = 50_000_000;
+localparam PWM_F = 20_000;
 
 // 复位按键 ：异步复位，同步释放
 wire rst_n;
@@ -41,17 +44,25 @@ key # (
   );
 
 // 角度模块
-wire angle_active;               //角度传播脉冲，2ms
-wire signed [16:0] angle_deg;    //电机角度
-wire signed [16:0] angle_vel;    //电机速度
-wire angle_otr;                  //电机超限的信号
-angle angle_inst (
+localparam ADC_WIDTH = 10;
+localparam ANGLE_WIDTH = 32;
+wire angle_active;      // 角度传播脉冲，周期为 2ms
+wire signed [WIDTH_DATA-1:0] angle_deg;    // 垂直摆杆角度  ，Q16，即放大 65536 倍
+wire signed [WIDTH_DATA-1:0] angle_vel;    // 垂直摆杆角速度，Q16
+wire angle_otr;         // 电机超限的信号
+wire calib_en;			// 清零信号
+angle # (
+    .ADC_WIDTH(ADC_WIDTH),
+    .ANGLE_WIDTH(ANGLE_WIDTH)
+  )
+  angle_inst (
     .clk(clk),
     .rst_n(rst_n),
     .clk_adc(clk_adc),
     .adc_oe(adc_oe),
     .adc_data(adc_data),
     .adc_otr(adc_otr),
+    .calib_en(calib_en),
     .angle_active(angle_active),
     .angle_deg(angle_deg),
     .angle_vel(angle_vel),
@@ -59,44 +70,58 @@ angle angle_inst (
   );
 
 // 编码器模块
-wire motor_dir;                //电机转向，1正转，0反转
-wire signed [31:0] cur_pos;    //电机当前位置
-wire signed [15:0] cur_speed;  //电机当前速度
-decode  decode_inst (
+wire pos_clr;		// 编码器数据清零信号，脉冲
+wire motor_dir;     // 电机转向，1正转，0反转
+wire signed [WIDTH_DATA-1:0] cur_pos;    // 水平摆杆角度，即位置，用 1 代表 2Π/1040 度，Q0
+wire signed [WIDTH_DATA-1:0] cur_speed;  // 水平摆杆速度，Q0
+decode # (
+    .WIDTH_DATA(WIDTH_DATA)
+  )
+  decode_inst (
     .clk(clk),
     .rst_n(rst_n),
+    .pos_clr(pos_clr),
     .encode_a(encode_a),
     .encode_b(encode_b),
     .motor_dir(motor_dir),
-    .cur_pos(cur_pos),
-    .cur_speed(cur_speed)
+    .cur_pos(cur_pos)
   );
 
 // 主控模块
 localparam  ANGLE_LIMIT = 12;
-wire swing_en;      //起摆使能信号
-wire pid_en;        //PID使能信号
-wire motor_stop;    //电机停止信号
-wire signed [31:0] target_angle;  //目标角度
-control # (
-    .ANGLE_LIMIT(ANGLE_LIMIT)
+wire swing_en;      //起摆使能信号，持续高电平
+wire motor_stop;    //电机停止信号，脉冲
+wire signed [WIDTH_DATA-1:0] target_pend;  //垂直摆杆目标角度
+wire lqr_en;		//LQR使能信号，持续高电平
+
+// LESO + LQR模块
+wire sat_pos;				// 正向饱和标志
+wire sat_neg;				// 反向饱和标志
+wire signed [12:0] u_duty;	// LQR输出的占空比数据，Q0
+lqr_leso # (
+    .WIDTH_DATA(WIDTH_DATA)
   )
-  control_inst (
+  lqr_leso_inst (
     .clk(clk),
     .rst_n(rst_n),
-    .key_pluse(key_pluse),
     .angle_active(angle_active),
+    .lqr_en(lqr_en),
+    .target_arm(32'sd0),
+    .target_pend(target_pend),
     .angle_deg(angle_deg),
-    .angle_otr(angle_otr),
     .cur_pos(cur_pos),
-    .swing_en(swing_en),
-    .pid_en(pid_en),
-    .motor_stop(motor_stop)
+    .cur_speed(cur_speed),
+    .u_duty(u_duty),
+    .sat_pos(sat_pos),
+    .sat_neg(sat_neg)
   );
 
-// 起摆模块
+  // 起摆模块
 wire signed [12:0] swing_data;  //起摆输出的占空比数据
-swing  swing_inst (
+swing # (
+    .WIDTH_DATA(WIDTH_DATA)
+  )
+  swing_inst (
     .clk(clk),
     .rst_n(rst_n),
     .swing_en(swing_en),
@@ -105,40 +130,12 @@ swing  swing_inst (
     .angle_vel(angle_vel),
     .swing_data(swing_data)
   );
-/*
-双环并联解耦 PID 模块
-- 内环: 垂直被动摆杆角度环 (纯 PD 控制)
-- 外环: 水平旋转臂位置环 (PID 控制)
-*/
-localparam  KP_ANGLE = 10000;  //角度环比例增益
-localparam  KD_ANGLE = 1000;   //角度环积分增益
-localparam  KP_POS = 10000;   //位置环比例增益
-localparam  KD_POS = 1000;    //位置环积分增益
-wire signed [12:0] pid_data;  //PID输出的占空比数据
-lqr # (
-    .KP_ANGLE(KP_ANGLE),
-    .KD_ANGLE(KD_ANGLE),
-    .KP_POS(KP_POS),
-    .KD_POS(KD_POS)
-  )
-  lqr_inst (
-    .clk(clk),
-    .rst_n(rst_n),
-    .pid_en(pid_en),
-    .angle_active(angle_active),
-    .target_angle(target_angle),
-    .angle_deg(angle_deg),
-    .angle_vel(angle_vel),
-    .cur_pos(cur_pos),
-    .cur_speed(cur_speed),
-    .pid_data(pid_data)
-  );
 
-// 2选1 MUX，选择输出起摆还是PID
+// 2选1 MUX，选择输出起摆还是LQR
 wire [12:0] duty_signed;  //电机有符号占空比
 always @(*) begin
-    if(pid_en) begin
-        duty_signed = pid_data;
+    if(lqr_en) begin
+        duty_signed = u_duty;
     end else if(swing_en) begin
         duty_signed = swing_data;
     end else begin
@@ -147,7 +144,11 @@ always @(*) begin
 end
 
 // 电机驱动模块
-motor  motor_inst (
+motor # (
+    .CLK_F(CLK_F),
+    .PWM_F(PWM_F)
+  )
+  motor_inst (
     .clk(clk),
     .rst_n(rst_n),
     .duty_signed(duty_signed),
