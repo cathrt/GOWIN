@@ -24,7 +24,11 @@ module motor_control #(
 
     //输出端口寄存器化
     always @(posedge clk or negedge rst_n) begin
-        if (!rst_n || motor_stop) begin
+        if (!rst_n) begin
+            duty_unsigned <= 12'd0;
+            ain1 <= 1'b0;
+            ain2 <= 1'b0;
+        end else if (motor_stop) begin
             duty_unsigned <= 12'd0;
             ain1 <= 1'b0;
             ain2 <= 1'b0;

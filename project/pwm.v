@@ -42,7 +42,9 @@ module pwm #(
 
     //输出端口寄存器化，根据当前计数器值和占空比值，输出PWM波形
     always @(posedge clk or negedge rst_n) begin
-        if (!rst_n | motor_stop) begin
+        if (!rst_n) begin
+            pwm_out <= 1'b0;
+        end else if (motor_stop) begin
             pwm_out <= 1'b0;
         end else if (cnt < duty_shadow) begin
             pwm_out <= 1'b1;        //计数器小于占空比，输出高电平

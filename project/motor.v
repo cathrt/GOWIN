@@ -48,8 +48,11 @@ pwm # (
 
 //电机转向一共打了一拍，PWM输出打了两拍，因此，我们要让电机转向多打一拍，让他们同时输出
 always @(posedge clk or negedge rst_n) begin
-	if(!rst_n || motor_stop) begin
+	if(!rst_n) begin
 		ain1 <= 1'b0;
+		ain2 <= 1'b0;
+	end else if(motor_stop) begin
+		ain1 <= 1'b0;		//电机关闭
 		ain2 <= 1'b0;
 	end else begin
 		ain1 <= ain1_r;

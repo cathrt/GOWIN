@@ -144,9 +144,9 @@ always @(posedge clk or negedge rst_n) begin
         // 在第 5 拍 输出
         // 饱和限幅，最大32位
         if(u_sum > U_MAX_32) begin   
-            u_duty <=  13'sd4095;
+            u_duty <=  13'sd2500;
         end else if (u_sum < U_MIN_32) begin
-            u_duty <= -13'sd4096;
+            u_duty <= -13'sd2500;
         end else begin
             u_duty <= u_sum[12:0];
         end                     

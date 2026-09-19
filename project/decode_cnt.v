@@ -20,10 +20,11 @@ module decode_cnt #(
 
 // 计数器
 always @(posedge clk or negedge rst_n) begin
-    if(!rst_n || pos_clr) begin
-      cur_pos <= 'sd0;      // 复位或者接收到清零信号时清零
-    end
-    else if(encode_pluse) begin
+    if(!rst_n) begin
+      cur_pos <= 'sd0;      
+    end else if(pos_clr) begin
+		cur_pos <= 'sd0;      // 接收到清零信号时清零
+    end else if(encode_pluse) begin
         if(motor_dir) begin
             cur_pos <= cur_pos + 1'b1;  // 正转+1
         end

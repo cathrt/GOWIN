@@ -11,60 +11,42 @@ LQR + LESO 联合仿真 Testbench
     6. 饱和测试（给大输入）
     7. 使能关断
 
-注意：
-    - 真实 2ms 节拍在 100MHz 下 = 200000 拍，仿真会很慢
-    - 用 TICK_CYCLES 参数控制节拍，仿真阶段设小一点（如 100）
-    - 上板前用真实值（200000）跑一次
 */
 module lqr_leso_test;
 
-    // ============================================================
-    // 参数
-    // ============================================================
-    localparam CLK_PERIOD   = 10;         // 100 MHz
-    localparam TICK_CYCLES  = 200;        // 仿真加速：真实 2ms 用 200000
+    localparam CLK_PERIOD = 20;         // 50 MHz
+    localparam CNT_MAX    = 2_000;      // 仿真加速：真实 2ms 用 2_000 来代替
+    localparam WIDTH_DATA = 32;
 
-    // ============================================================
     // 信号
-    // ============================================================
     reg  clk, rst_n;
     reg  lqr_en;
+    wire angle_active;
     reg  signed [31:0] target_arm, target_pend;
     reg  signed [31:0] angle_deg;
     reg  signed [31:0] cur_pos;
     reg  signed [31:0] cur_speed;
 
     wire signed [12:0] u_duty;
-    wire               sat_pos, sat_neg;
+    wire sat_pos, sat_neg;
 
-    reg  angle_active;
-
-    // ============================================================
     // 时钟
-    // ============================================================
     initial clk = 0;
     always #(CLK_PERIOD/2) clk = ~clk;
 
-    // ============================================================
-    // 2ms 节拍生成
-    // ============================================================
-    reg [31:0] tick_cnt;
+    // angle_active 2ms 节拍生成，我们用2_000代替2ms
+    reg [WIDTH_DATA-1:0] cnt;
     always @(posedge clk or negedge rst_n) begin
-        if (!rst_n) begin
-            tick_cnt     <= 0;
-            angle_active <= 1'b0;
-        end else if (tick_cnt == TICK_CYCLES - 1) begin
-            tick_cnt     <= 0;
-            angle_active <= 1'b1;
+        if(!rst_n) begin
+            cnt <= 0;
+        end else if(cnt == CNT_MAX) begin
+            cnt <= 0;
         end else begin
-            tick_cnt     <= tick_cnt + 1;
-            angle_active <= 1'b0;
+            cnt <= cnt + 1'b1;
         end
     end
+    assign angle_active = (cnt == CNT_MAX);
 
-    // ============================================================
-    // DUT
-    // ============================================================
     lqr_leso dut (
         .clk          (clk),
         .rst_n        (rst_n),
@@ -91,19 +73,11 @@ module lqr_leso_test;
         end
     end
 
-    // ============================================================
-    // 测试序列
-    // ============================================================
-    // Q16 参考值
-    localparam Q16_0p1 = 32'sd6554;      // 0.1 × 65536
-    localparam Q16_0p5 = 32'sd32768;     // 0.5 × 65536
-    localparam Q16_1p0 = 32'sd65536;     // 1.0 × 65536
-    localparam Q16_2p0 = 32'sd131072;    // 2.0 × 65536
-
-    integer i;
+    localparam Q16_10DEG = 32'sd11439;    // 10° 弧度值 (0.1745 rad * 65536)
+    localparam Q16_LARGE = 32'sd655360;   // 大角度扰动 (10 rad * 65536)
 
     initial begin
-        // 初始化
+        // 信号初始化
         rst_n       = 1'b0;
         lqr_en      = 1'b0;
         target_arm  = 32'sd0;
@@ -112,91 +86,71 @@ module lqr_leso_test;
         cur_pos     = 32'sd0;
         cur_speed   = 32'sd0;
 
-        // VCD 波形
-        $dumpfile("tb_lqr_leso.vcd");
-        $dumpvars(0, tb_lqr_leso);
-
-        // ============================================
         // 场景 1：复位
-        // ============================================
         $display("\n===== 场景 1: 复位 =====");
-        #1000;
-        rst_n = 1'b1;
-        #500;
+        #200;
+        @(negedge clk) rst_n = 1'b1;
+        #200;
 
-        // ============================================
-        // 场景 2：静止（输入全 0，lqr_en=0）
-        // ============================================
-        $display("\n===== 场景 2: 静止, lqr_en=0 =====");
-        #(CLK_PERIOD * TICK_CYCLES * 5);
+        // 场景 2：静止 (输入全 0，未使能)
+        $display("\n===== 场景 2: 静止 (lqr_en=0) =====");
+        repeat(2) @(posedge angle_active);
 
-        // ============================================
         // 场景 3：使能 LQR，输入仍全 0
-        // ============================================
-        $display("\n===== 场景 3: 使能 LQR, 输入全 0 =====");
-        lqr_en = 1'b1;
-        #(CLK_PERIOD * TICK_CYCLES * 10);
+        $display("\n===== 场景 3: 使能 LQR (输入全 0) =====");
+        @(negedge clk) lqr_en = 1'b1;
+        repeat(2) @(posedge angle_active);
 
-        // ============================================
-        // 场景 4：垂直摆角度偏差 +1.0 rad
-        //   预期：u_duty 变负（把摆杆拉回）
-        // ============================================
-        $display("\n===== 场景 4: 垂直摆 +1.0 rad 偏差 =====");
-        angle_deg = Q16_1p0;
-        #(CLK_PERIOD * TICK_CYCLES * 20);
-        angle_deg = 32'sd0;
-        #(CLK_PERIOD * TICK_CYCLES * 10);
+        // 场景 4：垂直摆杆偏移 10° (正角度)
+        // 预期动作：算法输出负推力尝试拉回摆杆
+        $display("\n===== 场景 4: 垂直摆杆 10° 偏差 =====");
+        @(negedge clk) angle_deg = Q16_10DEG;
+        repeat(5) @(posedge angle_active);
+        @(negedge clk) angle_deg = 32'sd0;
+        repeat(2) @(posedge angle_active);
 
-        // ============================================
         // 场景 5：水平臂位置偏差 +100 计数
-        //   预期：u_duty 变负
-        // ============================================
-        $display("\n===== 场景 5: 水平臂 +100 计数偏差 =====");
-        cur_pos = 32'sd100;
-        #(CLK_PERIOD * TICK_CYCLES * 20);
-        cur_pos = 32'sd0;
-        #(CLK_PERIOD * TICK_CYCLES * 10);
+        // 预期动作：算法产生反向推力让水平臂回中
+        $display("\n===== 场景 5: 水平臂 +100 脉冲偏差 =====");
+        @(negedge clk) cur_pos = 32'sd100;
+        repeat(5) @(posedge angle_active);
+        @(negedge clk) cur_pos = 32'sd0;
+        repeat(2) @(posedge angle_active);
 
-        // ============================================
-        // 场景 6：水平臂速度扰动
-        // ============================================
-        $display("\n===== 场景 6: 水平臂速度 +50 =====");
-        cur_speed = 32'sd50;
-        #(CLK_PERIOD * TICK_CYCLES * 20);
-        cur_speed = 32'sd0;
-        #(CLK_PERIOD * TICK_CYCLES * 10);
+        // 场景 6：水平臂速度扰动 +50
+        $display("\n===== 场景 6: 水平臂速度 +50 扰动 =====");
+        @(negedge clk) cur_speed = 32'sd50;
+        repeat(5) @(posedge angle_active);
+        @(negedge clk) cur_speed = 32'sd0;
+        repeat(2) @(posedge angle_active);
 
-        // ============================================
-        // 场景 7：大输入触发饱和
-        // ============================================
+        // 场景 7：大幅偏差触发饱和限幅 (±2500)
         $display("\n===== 场景 7: 大幅偏差触发饱和 =====");
-        angle_deg = Q16_2p0;    // 2 rad 偏差
-        cur_pos   = 32'sd5000;
-        #(CLK_PERIOD * TICK_CYCLES * 30);
-        angle_deg = 32'sd0;
-        cur_pos   = 32'sd0;
-        #(CLK_PERIOD * TICK_CYCLES * 10);
+        @(negedge clk) begin
+            angle_deg = Q16_LARGE;
+            cur_pos   = 32'sd5000;
+        end
+        repeat(5) @(posedge angle_active);
+        @(negedge clk) begin
+            angle_deg = 32'sd0;
+            cur_pos   = 32'sd0;
+        end
+        repeat(2) @(posedge angle_active);
 
-        // ============================================
-        // 场景 8：关闭使能
-        // ============================================
-        $display("\n===== 场景 8: lqr_en=0 输出归零 =====");
-        lqr_en = 1'b0;
-        #(CLK_PERIOD * TICK_CYCLES * 10);
+        // 场景 8：关断使能，推力强制归零
+        $display("\n===== 场景 8: lqr_en=0 急停输出归零 =====");
+        @(negedge clk) lqr_en = 1'b0;
+        repeat(2) @(posedge angle_active);
 
-        // ============================================
         // 结束
-        // ============================================
         $display("\n===== 仿真结束 =====");
-        #1000;
-        $finish;
+        #500;
+        $stop;
     end
 
-    // ============================================================
-    // 超时保护
-    // ============================================================
+    // 超时看门狗保护
     initial begin
-        #(CLK_PERIOD * TICK_CYCLES * 200);
+        #(CLK_PERIOD * CNT_MAX * 50); // 允许最大跑 50 个控制周期
         $display("\n[WARN] 仿真超时，强制结束");
         $finish;
     end

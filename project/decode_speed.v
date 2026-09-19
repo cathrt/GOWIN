@@ -69,6 +69,7 @@ module decode_speed #(
 
     // Gowin Divider IP 除法器 例化
     wire [25:0]speed;
+/*
     gowin_divider u_gowin_divider (
         .clk        (clk),          // 50MHz 系统时钟
         .restn      (rst_n),        // 高云 IP 复位低电平有效
@@ -76,6 +77,7 @@ module decode_speed #(
         .divisor    (m2_r),         // 除数输入（测得的脉冲间隔计数值）
         .quotient   (speed)         // 输出的商（角速度）
     );
+*/
 
     //电机正反转
     //除法器不允许除数为0，而当电机停止转动时，m2_r被设置为1，除法器输出的角速度为K_MOTOR，但实际上此时角速度应为0，因此需要在此处进行处理

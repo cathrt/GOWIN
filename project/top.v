@@ -32,7 +32,7 @@ rst_n_sync  rst_n_sync_inst (
 
 // 按键模块
 localparam KEY_NUM = 4;
-wire [3:0] key_pluse;   //按键完成单周期脉冲
+wire [3:0] key_pulse;   //按键完成单周期脉冲
 key # (
     .KEY_NUM(KEY_NUM)
   )
@@ -132,7 +132,7 @@ swing # (
   );
 
 // 2选1 MUX，选择输出起摆还是LQR
-wire [12:0] duty_signed;  //电机有符号占空比
+reg signed [12:0] duty_signed;  //电机有符号占空比
 always @(*) begin
     if(lqr_en) begin
         duty_signed = u_duty;
@@ -159,7 +159,9 @@ motor # (
   );
 
 // led模块
-assign led_out[0] = motor_dir[0]; // 电机反转
-assign led_out[1] = motor_dir[1]; // 电机正转
+assign led_out[0] = motor_dir; // 电机反转
+assign led_out[1] = motor_dir; // 电机正转
+assign led_out[2] = 1'b0;
+assign led_out[3] = 1'b0;
 
 endmodule //top
