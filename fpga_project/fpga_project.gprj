@@ -3,6 +3,8 @@
 <Project>
     <Template>FPGA</Template>
     <Version>5</Version>
-    <Device name="" pn="">gw2a55c-008</Device>
-    <FileList/>
+    <Device name="GW2A-55C" pn="GW2A-LV55PG1156C8/I7">gw2a55c-008</Device>
+    <FileList>
+        <File path="src/angle.v" type="file.verilog" enable="1"/>
+    </FileList>
 </Project>
