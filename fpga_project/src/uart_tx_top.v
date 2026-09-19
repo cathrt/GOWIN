@@ -72,7 +72,7 @@ fifo_w_control # (
     .w_en(w_en)
   );
 
-fifo u_fifo (
+fifo_sc u_fifo (
     .Data        (w_data),      // input  [7:0]  写入数据
     .Reset       (~rst_n),      // input        注意：高云复位默认高有效，低电平复位需取反
     .Clk         (clk),         // input        50MHz 系统时钟

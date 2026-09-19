@@ -84,7 +84,8 @@ decode # (
     .encode_a(encode_a),
     .encode_b(encode_b),
     .motor_dir(motor_dir),
-    .cur_pos(cur_pos)
+    .cur_pos(cur_pos),
+    .cur_speed(cur_speed)
   );
 
 // 主控模块

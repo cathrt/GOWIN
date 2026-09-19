@@ -1,0 +1,12 @@
+[General]
+ipc_version=4
+file=integer_multiply_divider
+module=gowin_divider
+target_device=gw2a55c-008
+type=imd
+version=1.0
+
+[Config]
+LANG=0
+RADIX_MODE_SELECT=radix4
+Synthesis_tool=GowinSynthesis

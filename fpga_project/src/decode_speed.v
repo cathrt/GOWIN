@@ -20,7 +20,7 @@ module decode_speed #(
     );
 
     // K = f_c 
-    localparam [25:0] K = 26'd50_000_000;
+    localparam [31:0] K = 26'd50_000_000;
 
     // 两个脉冲之间间隔时间比20ms长，则认为电机不转，50MHz*20ms = 1_000_000 
     localparam integer CNT_MAX = 20'd1_000_000;
@@ -42,6 +42,17 @@ module decode_speed #(
         end
     end
 
+    //锁存脉冲间隔计数值
+    //不锁存的话，cnt会直接清零重新计数
+    reg [WIDTH-1:0] m2_r;
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            m2_r <= 'd1;        // 除数不能为0，初始化为1
+        end else if (encode_pluse && cnt < CNT_MAX) begin
+            m2_r <= cnt;        // 脉冲到来，锁存脉冲间隔计数值
+        end 
+    end
+
     // 超过脉冲间隔计数值最大值，使能电机停止转动
     reg motor_stop;
     always @(posedge clk or negedge rst_n) begin
@@ -56,28 +67,49 @@ module decode_speed #(
         end
     end
 
-    //锁存脉冲间隔计数值
-    //不锁存的话，cnt会直接清零重新计数
-    reg [WIDTH-1:0] m2_r;
+    // 启动除法器模块
+    reg  req_valid;  // 除法器启动脉冲
+    wire req_ready;  // 除法器空闲的脉冲
+    // 当有新脉冲且除法器空闲时，打出 1 拍 req_valid 启动除法
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
-            m2_r <= 'd1;        // 除数不能为0，初始化为1
-        end else if (encode_pluse && cnt < CNT_MAX) begin
-            m2_r <= cnt;        // 脉冲到来，锁存脉冲间隔计数值
-        end 
+            req_valid <= 1'b0;
+        end else if (encode_pluse && cnt < CNT_MAX && req_ready) begin
+            req_valid <= 1'b1;
+        end else begin
+            req_valid <= 1'b0;
+        end
     end
 
     // Gowin Divider IP 除法器 例化
-    wire [25:0]speed;
-/*
+    wire [31:0]speed;
+    wire resp_valid;    // 计算完成标志
     gowin_divider u_gowin_divider (
-        .clk        (clk),          // 50MHz 系统时钟
-        .restn      (rst_n),        // 高云 IP 复位低电平有效
-        .dividend   (K),            // 被除数输入(常数)
-        .divisor    (m2_r),         // 除数输入（测得的脉冲间隔计数值）
-        .quotient   (speed)         // 输出的商（角速度）
+        .clk        (clk),
+        .rstn       (rst_n),
+        .func       (4'd5),                 // 5 = 无符号除法 (DIVU)
+        .op0        (K),                    // 被除数
+        .op1        ({12'd0, m2_r}),        // 除数 (20位补齐32位)
+        .req_valid  (req_valid),            // 启动计算脉冲
+        .req_ready  (req_ready),            // 1 即IP核可以开启新的计算
+        .resp_ready (1'b1),                 // 随时准备接收结果，常通
+        .resp_valid (resp_valid),           // 计算完成标志，高电平表示出来结果了
+        .res0       (speed),                // 商输出，无符号数
+        .res1       (),                     // 余数悬空
+        .kill       (1'b0),                 // 中断信号，拉低即不取消计算
+        .tagI       (5'd0),
+        .tagO       ()
     );
-*/
+
+    // 锁存有效除法结果并进行符号转换
+    reg  [31:0] abs_speed;
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n) begin
+            abs_speed <= 32'd0;
+        end else if (resp_valid) begin
+            abs_speed <= speed; // 仅在计算完成标志有效时锁存结果
+        end
+    end
 
     //电机正反转
     //除法器不允许除数为0，而当电机停止转动时，m2_r被设置为1，除法器输出的角速度为K_MOTOR，但实际上此时角速度应为0，因此需要在此处进行处理
@@ -86,11 +118,12 @@ module decode_speed #(
             cur_speed <= {WIDTH_DATA{1'b0}};
         end else if (motor_stop) begin
             cur_speed <= {WIDTH_DATA{1'b0}};    //强制电机停止转动，角速度为0
-        end else if (motor_dir) begin
-            cur_speed <= {6'd0, speed};         //正转，角速度为正
-        end else begin
-            cur_speed <= -$signed({6'd0, speed}); //反转，角速度为负
+        end else begin 
+            if (motor_dir) begin
+                cur_speed <= $signed(abs_speed);         //正转，角速度为正
+            end else begin
+                cur_speed <= -$signed(abs_speed); //反转，角速度为负
+            end
         end
-        
     end
 endmodule

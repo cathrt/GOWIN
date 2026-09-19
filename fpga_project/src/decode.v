@@ -12,7 +12,7 @@ module decode #(
       // 输出
       output wire motor_dir,
       output wire signed [WIDTH_DATA-1:0] cur_pos,
-		output wire signed [WIDTH_DATA-1:0] cur_speed
+	  output wire signed [WIDTH_DATA-1:0] cur_speed
   );
 
   wire encode_pluse; 	// 边沿脉冲，电机转一圈产生13*20*4=1040个脉冲
