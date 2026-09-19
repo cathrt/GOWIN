@@ -1,37 +1,39 @@
 /*
 FIFO写入模块
 1. 接收 500Hz (2ms) 主采样节拍，执行 5 分频降采样（实现 10ms / 100Hz 传输周期）。
-2. 在第 1 拍锁存 5 通道 16 位状态数据（角度、角速度、位置、速度、力矩），消除数据撕裂。
-3. 随后以 50MHz 时钟连续 14 拍突发写入 FIFO（10 字节数据 + 4 字节 VOFA+ 帧尾）
+2. 在第 1 拍锁存 5 通道 32 位状态数据（角度、角速度、位置、速度、力矩），消除数据撕裂。
+3. 随后以 50MHz 时钟连续 22 拍突发写入 FIFO（18 字节数据 + 4 字节 VOFA+ 帧尾）
 */
 module fifo_w_control#(
-    parameter integer DECIM_N     = 5,          // 500Hz / 5 = 100Hz (每 10ms 打包一次)(5分频)
-    parameter [7:0]   TAIL_BYTE0  = 8'h00,      // VOFA+ 协议帧尾
-    parameter [7:0]   TAIL_BYTE1  = 8'h00,
-    parameter [7:0]   TAIL_BYTE2  = 8'h80,
-    parameter [7:0]   TAIL_BYTE3  = 8'h7F
+    parameter WIDTH_DATA = 32,
+    parameter WIDTH_BYTE = 8,
+    parameter integer DECIM_N = 5,          // 500Hz / 5 = 100Hz (每 10ms 打包一次)(5分频)
+    parameter [WIDTH_BYTE-1:0] TAIL_BYTE0 = 8'h00,      // VOFA+ 协议帧尾
+    parameter [WIDTH_BYTE-1:0] TAIL_BYTE1 = 8'h00,
+    parameter [WIDTH_BYTE-1:0] TAIL_BYTE2 = 8'h80,
+    parameter [WIDTH_BYTE-1:0] TAIL_BYTE3 = 8'h7F
 )(
     input  wire clk,
     input  wire rst_n,
     //传送的节拍,500Hz,即2ms
     input  wire angle_avtive,
     //要发送的数据
-    input  wire signed [16:0] angle_deg,    //摆杆当前角度
-    input  wire signed [16:0] angle_vel,    //摆杆角速度
-    input  wire signed [31:0] cur_pos,      //水平臂位置
-    input  wire signed [15:0] cur_speed,    //水平臂线速度
+    input  wire signed [WIDTH_DATA-1:0] angle_deg,    //摆杆当前角度
+    input  wire signed [WIDTH_DATA-1:0] angle_vel,    //摆杆角速度
+    input  wire signed [WIDTH_DATA-1:0] cur_pos,      //水平臂位置
+    input  wire signed [WIDTH_DATA-1:0] cur_speed,    //水平臂线速度
     input  wire signed [12:0] duty_signed,  //占空比数据
     //fifo写端口
     input  wire full_sig,      //满信号
-    output reg  [7:0]  w_data,  //写数据
+    output reg  [WIDTH_BYTE-1:0]  w_data,  //写数据
     output reg  w_en            //写使能
 );
 
-localparam WIDTH = $clog2(DECIM_N);
+localparam WIDTH_CNT = $clog2(DECIM_N);
 
 // 5分频,降采样率，即5次数据中我们只采集第一次的数据
 // 同时我们确定只在第一次2ms的时候进行采样
-reg [WIDTH-1:0]cnt; // 计数，每5次循环
+reg [WIDTH_CNT-1:0]cnt; // 计数，每5次循环
 reg en_smaple;      // 采样使能，只在计数第一次的时候采集数据
 always @(posedge clk or negedge rst_n) begin
     if(!rst_n) begin
@@ -54,11 +56,10 @@ always @(posedge clk or negedge rst_n) begin
 end
 
 // 锁存传进来的数据，只在第一拍（系统时钟）的时候进行锁存
-// 17位数据不支持，必须扩展为 32 位
-reg signed [31:0] r_angle_deg;
-reg signed [31:0] r_angle_vel;
-reg signed [31:0] r_cur_pos;
-reg signed [15:0] r_cur_speed;
+reg signed [WIDTH_DATA-1:0] r_angle_deg;
+reg signed [WIDTH_DATA-1:0] r_angle_vel;
+reg signed [WIDTH_DATA-1:0] r_cur_pos;
+reg signed [WIDTH_DATA-1:0] r_cur_speed;
 // 12位数据不支持，必须拓展为 16 位
 reg signed [15:0] r_duty_signed;
 always @(posedge clk or negedge rst_n) begin
@@ -69,9 +70,8 @@ always @(posedge clk or negedge rst_n) begin
         r_cur_speed <= 16'sd0;
         r_duty_signed  <= 16'd0;
     end else if (en_smaple && !full_sig) begin
-        // 17位符号扩展至32位 (高15位补符号位)
-        r_angle_deg   <= {{15{angle_deg[16]}}, angle_deg};
-        r_angle_vel   <= {{15{angle_vel[16]}}, angle_vel};
+        r_angle_deg   <= angle_deg;
+        r_angle_vel   <= angle_vel;
         r_cur_pos     <= cur_pos;
         r_cur_speed   <= cur_speed;
         r_duty_signed <= {{3{duty_signed[12]}}, duty_signed};
@@ -163,7 +163,7 @@ always @(posedge clk or negedge rst_n) begin
                 state  <= state + 1'b1;
             end
 
-            // 4: 水平臂线速度 (2 字节)
+            // 4: 水平臂线速度 (4 字节)
             5'd13: begin
                 w_en   <= 1'b1;
                 w_data <= r_cur_speed[7:0];
@@ -174,36 +174,46 @@ always @(posedge clk or negedge rst_n) begin
                 w_data <= r_cur_speed[15:8];
                 state  <= state + 1'b1;
             end
+            5'd15: begin
+                w_en   <= 1'b1;
+                w_data <= r_cur_speed[23:16];
+                state  <= state + 1'b1;
+            end
+            5'd16: begin
+                w_en   <= 1'b1;
+                w_data <= r_cur_speed[31:24];
+                state  <= state + 1'b1;
+            end
 
             // CH5: 输出力矩占空比 (2 字节)
-            5'd15: begin
+            5'd17: begin
                 w_en   <= 1'b1;
                 w_data <= r_duty_signed[7:0];
                 state  <= state + 1'b1;
             end
-            5'd16: begin
+            5'd18: begin
                 w_en   <= 1'b1;
                 w_data <= r_duty_signed[15:8];
                 state  <= state + 1'b1;
             end
 
             // VOFA+ 协议尾帧 (4 字节)
-            5'd17: begin
+            5'd19: begin
                 w_en   <= 1'b1;
                 w_data <= TAIL_BYTE0;
                 state  <= state + 1'b1;
             end
-            5'd18: begin
+            5'd20: begin
                 w_en   <= 1'b1;
                 w_data <= TAIL_BYTE1;
                 state  <= state + 1'b1;
             end
-            5'd19: begin
+            5'd21: begin
                 w_en   <= 1'b1;
                 w_data <= TAIL_BYTE2;
                 state  <= state + 1'b1;
             end
-            5'd20: begin
+            5'd22: begin
                 w_en   <= 1'b1;
                 w_data <= TAIL_BYTE3; // 送出最后一个尾帧字节
                 state  <= 5'd0;       // 存完 16 字节，下一拍回归空闲态

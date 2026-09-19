@@ -2,16 +2,19 @@
 
 module uart_test;
 
+    localparam WIDTH_DATA = 32;
+    localparam WIDTH_BYTE = 8;
+
     reg clk;
     reg rst_n;
     //控制信号激励
     reg angle_active;
     reg uart_en;
     //数据激励
-    reg signed [16:0] angle_deg;
-    reg signed [16:0] angle_vel;
-    reg signed [31:0] cur_pos;
-    reg signed [15:0] cur_speed;
+    reg signed [WIDTH_DATA-1:0] angle_deg;
+    reg signed [WIDTH_DATA-1:0] angle_vel;
+    reg signed [WIDTH_DATA-1:0] cur_pos;
+    reg signed [WIDTH_DATA-1:0] cur_speed;
     reg signed [12:0] duty_signed;
     //输出
     wire tx_data_out;

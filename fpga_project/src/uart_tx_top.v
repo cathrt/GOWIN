@@ -4,6 +4,8 @@ PID处理数据周期为2ms，一共要发送的数据为96位，16字节，采�
 采用115200bps，发送16个字节需要约 1ms的时间，完全可以
 */
 module uart_tx_top#(
+	parameter WIDTH_DATA = 32,
+	parameter WIDTH_BYTE = 8,
     parameter integer DECIM_N     = 5,          // 500Hz / 5 = 100Hz (每 10ms 打包一次)
     parameter [7:0]   TAIL_BYTE0  = 8'h00,      // VOFA+ 协议帧尾
     parameter [7:0]   TAIL_BYTE1  = 8'h00,
@@ -52,6 +54,8 @@ localparam  CLK_F = 26'd50_000_000;
   wire       tx_done_sig;
 
 fifo_w_control # (
+    .WIDTH_DATA(WIDTH_DATA),
+    .WIDTH_BYTE(WIDTH_BYTE),
     .DECIM_N(DECIM_N),
     .TAIL_BYTE0(TAIL_BYTE0),
     .TAIL_BYTE1(TAIL_BYTE1),

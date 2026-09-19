@@ -4,6 +4,7 @@
 2.并行（1字节）转串行
 */
 module uart_tx #(
+    parameter WIDTH_BYTE = 8,
     parameter BPS   = 17'd115200,
     parameter CLK_F = 26'd50_000_000
 )(
@@ -11,7 +12,7 @@ module uart_tx #(
     input  wire rst_n,
     //输入
     input  wire tx_en,          //数据开始发送标志，脉冲
-    input  wire [7:0] tx_data,  //数据
+    input  wire [WIDTH_BYTE-1:0] tx_data,  //数据
     //输出
     output reg  tx_done_sig,    //完成信号，脉冲
     output reg  tx_data_out     //向上位机输出的数据

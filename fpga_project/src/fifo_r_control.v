@@ -2,17 +2,19 @@
 串口读取FIFO模块
 读取FIFO数据并传入串口发送模块，接受顶层控制
 */
-module fifo_r_control (
+module fifo_r_control #(
+    parameter WIDTH_BYTE = 8
+) (
     input  wire clk,
     input  wire rst_n,
-    //上层模块的控制信号
-    input  wire uart_en,   //顶层控制串口发送的开关，持续高电平
-    //FIFO数据，已经将数据进行了切片，已经包含了正负号，不能将切片成的数据转化成有符号数
-    input  wire [7:0] r_data,
+    // 上层模块的控制信号
+    input  wire uart_en,   // 顶层控制串口发送的开关，持续高电平
+    // FIFO数据，已经将数据进行了切片，已经包含了正负号，不能将切片成的数据转化成有符号数
+    input  wire [WIDTH_BYTE-1:0] r_data,
     output reg  r_en,
     input  wire empty_sig,
-    //串口发送模块信息
-    output reg  [7:0] tx_data,
+    // 串口发送模块信息
+    output reg  [WIDTH_BYTE-1:0] tx_data,
     input  wire tx_done_sig,
     output reg  tx_en
 );
