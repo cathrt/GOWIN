@@ -1,0 +1,20 @@
+# Gowin自动生成，不上传github
+impl/
+sim/
+reports/
+output/
+*.gws
+*.gprj.user
+project_crc.txt
+
+# 临时日志
+*.log
+*.rpt
+*.bak
+
+# 保留要上传的文件
+!*.gprj
+!src/**
+!tb/**
+!ip/**
+!constraint/**
