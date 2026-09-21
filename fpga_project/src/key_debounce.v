@@ -3,8 +3,8 @@
 同步化异步输入，延迟20ms
 */
 module key_debounce #(
-    parameter integer CLK_FREQ = 50_000_000,                 // 50MHz 时钟
-    parameter integer DELAY_MS = 20,                         // 机械延时 20ms
+    parameter integer CLK_FREQ = 50_000_000,                  // 50MHz 时钟
+    parameter integer DELAY_MS = 20,                          // 机械延时 20ms
     parameter integer CNT_MAX  = (CLK_FREQ / 1000) * DELAY_MS // 计数门限
 )(
     input  wire clk,

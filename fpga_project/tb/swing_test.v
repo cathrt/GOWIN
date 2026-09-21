@@ -1,14 +1,17 @@
 `timescale 1ns/1ps
 
 module swing_test;
+
+    localparam WIDTH_DATA = 16;
+
     reg  clk;
     reg  rst_n;
     //控制信息
     reg  swing_en;
     reg  angle_active;
     //角度信息
-    reg  signed [31:0] angle_deg;
-    reg  signed [31:0] angle_vel;
+    reg  signed [WIDTH_DATA-1:0] angle_deg;
+    reg  signed [WIDTH_DATA-1:0] angle_vel;
     wire signed [12:0] swing_data;
 
     swing  uut (
@@ -35,8 +38,8 @@ module swing_test;
         rst_n = 1'b0;
         angle_active = 1'b0;
         swing_en = 1'b0;
-        angle_deg = 32'sd0;
-        angle_vel = 32'sd0;
+        angle_deg = 0;
+        angle_vel = 0;
         //关闭复位
         #100 rst_n = 1'b1;
         #500;
@@ -47,25 +50,25 @@ module swing_test;
         for (i = 0; i < 4; i = i + 1) begin
             @(negedge clk);
             case (i)
-                // 状态 0: 下半周 + 顺时针 (|θ| > 90°, vel <= 0) 预期输出 2500 * 0.3  = 750 
+                // 状态 0: 下半周 + 顺时针 (|θ| > 90°, vel <= 0) -> 预期输出: +750
                 0: begin
-                    angle_deg = 32'sd7_864_320; // 120° * 256 * 256 (下半周)
-                    angle_vel = -32'sd500;  // 顺时针
+                    angle_deg = 16'sd356;  // 约 120° (下半周，356 > 267)
+                    angle_vel = -16'sd20;  // 顺时针速度
                 end
-                // 状态 1: 下半周 + 逆时针 (|θ| > 90°, vel >  0) 预期输出 -750
+                // 状态 1: 下半周 + 逆时针 (|θ| > 90°, vel > 0)  -> 预期输出: -750
                 1: begin
-                    angle_deg = 32'sd7_864_320; // 120° * 128 (下半周)
-                    angle_vel = 32'sd500;   // 逆时针
+                    angle_deg = 16'sd356;  // 约 120° (下半周，356 > 267)
+                    angle_vel = 16'sd20;   // 逆时针速度
                 end
-                // 状态 2: 上半周 + 顺时针 (|θ| <= 90°, vel <= 0) 预期输出 -450
+                // 状态 2: 上半周 + 顺时针 (|θ| <= 90°, vel <= 0) -> 预期输出: -450
                 2: begin
-                    angle_deg = 32'sd2_949_120;  // 45° * 128 (上半周)
-                    angle_vel = -32'sd500;  // 顺时针
+                    angle_deg = 16'sd134;  // 约 45° (上半周，134 <= 267)
+                    angle_vel = -16'sd20;  // 顺时针速度
                 end
-                // 状态 3: 上半周 + 逆时针 (|θ| <= 90°, vel >  0) 预期输出 450 
+                // 状态 3: 上半周 + 逆时针 (|θ| <= 90°, vel > 0)  -> 预期输出: +450
                 3: begin
-                    angle_deg = 32'sd2_949_120;  // 45° * 128 (上半周)
-                    angle_vel = 32'sd500;   // 逆时针
+                    angle_deg = 16'sd134;  // 约 45° (上半周，134 <= 267)
+                    angle_vel = 16'sd20;   // 逆时针速度
                 end
             endcase
             // 激励角度使能

@@ -1,7 +1,7 @@
 /*
 复位按键：异步复位，同步释放
 */
-module rst_n_sync(
+module rst_n_sync (
     input  wire rstn,
     input  wire clk,
     output wire rst_n

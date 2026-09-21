@@ -5,16 +5,19 @@ PWM波形发生器模块
 2. 将电机转向与PWM输出同步
 */
 module pwm #(
-    //PWM周期内最大的系统脉冲数，CLK_F(50MHz) / PWM_F(20KHz)
+    // PWM周期内最大的系统脉冲数，CLK_F(50MHz) / PWM_F(20KHz)
     parameter  DUTY_MAX = 2500
 ) (
         input  wire clk,
         input  wire rst_n,
-        //输入
-        input  wire [11:0] duty_unsigned,   //无符号占空比
-        input  wire motor_stop,             //电机停止信号
+        // 输入
+        input  wire [11:0] duty_unsigned,   // 无符号占空比
+        input  wire motor_stop,             // 电机停止信号
+        input  wire motor_dir,              // 电机转向，0正转，1反转
         //输出
-        output reg   pwm_out                //PWM波形输出
+        output reg  pwm_out,                // PWM波形输出
+        output reg  ain1,                   // 电机驱动A相输出1
+        output reg  ain2                    // 电机驱动A相输出2
     );
 
     //PWM周期基准计数器
@@ -29,14 +32,19 @@ module pwm #(
         end
     end
 
-    //影子寄存器，仅在每个 PWM 周期的起始点（cnt == 0）同步载入新占空比
+    //影子寄存器，仅在每个 PWM 周期的起始点（cnt == 0）同步 载入新占空比
+    //                                               同步 决定电机转向
     //确保在该PWM周期内，按固定不变的占空比进行输出
+    //                  按固定不变的电机转向输出
     reg [11:0] duty_shadow;
+    reg dir_shadow;
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             duty_shadow <= 12'd0;
+            dir_shadow  <= 1'b0;
         end else if (cnt == 12'd0) begin
             duty_shadow <= duty_unsigned;
+            dir_shadow  <= motor_dir;
         end
     end
 
@@ -44,12 +52,22 @@ module pwm #(
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             pwm_out <= 1'b0;
+            ain1    <= 1'b0;
+            ain2    <= 1'b0; // 停机模式
         end else if (motor_stop) begin
             pwm_out <= 1'b0;
-        end else if (cnt < duty_shadow) begin
-            pwm_out <= 1'b1;        //计数器小于占空比，输出高电平
+            ain1    <= 1'b0;
+            ain2    <= 1'b0; // 停机模式
         end else begin
-            pwm_out <= 1'b0;        //计数器大于等于占空比，输出低电平
+            // 输出PWM
+            if (cnt < duty_shadow) begin
+                pwm_out <= 1'b1;        //计数器小于占空比，输出高电平
+            end else begin
+                pwm_out <= 1'b0;        //计数器大于等于占空比，输出低电平
+            end
+            //输出电机转向
+            ain1 <= (dir_shadow == 1'b0) ? 1'b1 : 1'b0;
+            ain2 <= (dir_shadow == 1'b0) ? 1'b0 : 1'b1;
         end
     end
 

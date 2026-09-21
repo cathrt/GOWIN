@@ -1,6 +1,6 @@
 //编码器解码模块
 module decode #(
-	parameter WIDTH_DATA = 32
+	parameter WIDTH_DATA = 16
 ) (
       input  wire clk,
       input  wire rst_n,
@@ -15,7 +15,7 @@ module decode #(
 	  output wire signed [WIDTH_DATA-1:0] cur_speed
   );
 
-  wire encode_pluse; 	// 边沿脉冲，电机转一圈产生13*20*4=1040个脉冲
+  wire encode_pulse; 	// 边沿脉冲，电机转一圈产生13*20*4=1040个脉冲
 
   // 解码同步模块
   decode_sync  decode_sync_inst (
@@ -23,7 +23,7 @@ module decode #(
       .rst_n(rst_n),
       .encode_a(encode_a),
       .encode_b(encode_b),
-      .encode_pluse(encode_pluse),
+      .encode_pulse(encode_pulse),
       .motor_dir(motor_dir)
     );
 
@@ -35,7 +35,7 @@ module decode #(
     .clk(clk),
     .rst_n(rst_n),
     .pos_clr(pos_clr),
-    .encode_pluse(encode_pluse),
+    .encode_pulse(encode_pulse),
     .motor_dir(motor_dir),
     .cur_pos(cur_pos)
   );
@@ -47,7 +47,7 @@ module decode #(
   decode_speed_inst (
     .clk(clk),
     .rst_n(rst_n),
-    .encode_pluse(encode_pluse),
+    .encode_pulse(encode_pulse),
     .motor_dir(motor_dir),
     .cur_speed(cur_speed)
   );

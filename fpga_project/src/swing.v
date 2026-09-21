@@ -5,13 +5,13 @@
 3. 占空比范围为 -2500 ~ 2500
 */
 module swing #(
-    parameter WIDTH_DATA = 32
+    parameter WIDTH_DATA = 16
 ) (
     input  wire clk,
     input  wire rst_n,
     //输入使能
     input  wire swing_en,
-    //输入的角度信息
+    //输入的角度信息(ADC 纯码值格式)
     input  wire angle_active,
     input  wire signed [WIDTH_DATA-1:0] angle_deg,
     input  wire signed [WIDTH_DATA-1:0] angle_vel,
@@ -32,8 +32,8 @@ localparam signed [12:0] DUTY_BOOST = 13'sd450; // 上半周轻托力  18% 占�
 //状态判定，4选1MUX
 wire [WIDTH_DATA-1:0] abs_angle = (angle_deg > 0) ? angle_deg : -angle_deg; //绝对值
 
-// 1: 下半周, 0: 上半周
-wire half_angle = (abs_angle > 32'd5_898_240); //绝对值大于90°，90*256*256=
+// 1: 下半周, 0: 上半周。90度对应的 ADC 偏差码值阈值：(1024 / 345度) * 90度 ≈ 267
+wire half_angle = (abs_angle > 16'd267); 
 
 // 1: 顺时针, 0: 逆时针
 wire half_dir = (angle_vel <= 0); //角速度小于等于0，顺时针

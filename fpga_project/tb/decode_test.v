@@ -1,13 +1,16 @@
 `timescale 1ns/1ps
 
 module decode_test;
+
+    localparam WIDTH_DATA = 16;
+
     reg  clk;
     reg  rst_n;
     reg  encode_a;      //编码器输入A相
     reg  encode_b;      //编码器输入B相
     wire encode_pluse;  //4倍频后的脉冲，在此时采集数据
     wire motor_dir;     //电机正反转
-    wire signed [31:0] cur_pos;
+    wire signed [WIDTH_DATA-1:0] cur_pos;
 
     parameter K_MOTOR   = 302076;
     parameter MOTOR_MAX = 1_000_000;

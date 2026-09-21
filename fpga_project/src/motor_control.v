@@ -15,33 +15,28 @@ module motor_control #(
         input  wire motor_stop,                 //电机停止转动标志位
         //输出
         output reg  [11:0] duty_unsigned,       //占空比无符号数
-        output reg  ain1,                       //电机驱动A相输入1
-        output reg  ain2                        //电机驱动A相输入2
+        output reg  motor_dir                   //电机转向，0正转，1反转
     );
 
-    //求绝对值，转化为无符号数：正数取原码，负数取补码（反码+1）
+    // 求绝对值，转化为无符号数：正数取原码，负数取补码（反码+1）
     wire [12:0] abs_duty = ( duty_signed[12] == 1'b0) ? duty_signed : ~duty_signed + 1'b1;
 
-    //输出端口寄存器化
+    // 输出端口寄存器化
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             duty_unsigned <= 12'd0;
-            ain1 <= 1'b0;
-            ain2 <= 1'b0;
+            motor_dir <= 1'b0;
         end else if (motor_stop) begin
             duty_unsigned <= 12'd0;
-            ain1 <= 1'b0;
-            ain2 <= 1'b0;
+            motor_dir <= 1'b0;
         end else begin
-            //限幅，范围为-2500~2500
+            // 限幅，最大为 2500
             duty_unsigned <= (abs_duty > DUTY_MAX) ? DUTY_MAX : abs_duty[11:0]; 
-            //控制正反转
+            // 控制正反转
             if (duty_signed[12] == 1'b0) begin  //正转
-                ain1 <= 1'b1;   //A相输入1高电平
-                ain2 <= 1'b0;   //A相输入2低电平
+                motor_dir <= 1'b0;
             end else begin                      //反转
-                ain1 <= 1'b0;   //A相输入1低电平
-                ain2 <= 1'b1;   //A相输入2高电平
+                motor_dir <= 1'b1;
             end
         end
     end

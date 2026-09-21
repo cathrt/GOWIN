@@ -3,7 +3,7 @@
 采用 generate 循环例化，消除手写重复连线与索引笔误
 */
 module key #(
-    parameter integer KEY_NUM = 4 // 支持任意按键路数扩展
+    parameter integer KEY_NUM = 4  // 支持任意按键路数扩展
 )(
     input  wire                 clk,
     input  wire                 rst_n,
