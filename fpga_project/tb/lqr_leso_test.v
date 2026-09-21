@@ -1,4 +1,4 @@
-`timescale 1ns / 1ps
+`timescale 1ns / 1ns
 /*
 LQR + LESO 联合仿真 Testbench
 
@@ -15,7 +15,7 @@ LQR + LESO 联合仿真 Testbench
 module lqr_leso_test;
 
     localparam CLK_PERIOD = 20;         // 50 MHz
-    localparam CNT_MAX    = 2_000;      // 仿真加速：真实 2ms 用 2_000 来代替
+    localparam CNT_MAX    = 200;      // 仿真加速：真实 2ms 用 200 来代替
     localparam WIDTH_DATA = 32;
 
     // 信号

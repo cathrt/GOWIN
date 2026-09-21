@@ -9,7 +9,7 @@
 2. 我们的水平摆杆输入的是位置（1代表2Π/1040），因此我们的参数要*2Π/1040 在放大2^16倍，与垂直摆杆一致，最终输出右移16位
 */
 module lqr #(
-    parameter WIDTH_DATA = 32,          // 数据总位宽
+    parameter WIDTH_DATA = 16,          // 数据总位宽
     // Q格式
     parameter ARM_Q  = 0,           // 水平臂输入：编码器计数（整数）
     parameter PEND_Q = 16,          // 垂直摆输入：Q16
