@@ -77,7 +77,7 @@ module angle_filter_tb;
     adc_overrange = 1'b0;
 
     #100;
-    $finish;
+    $stop;
 end
 
     // 观察滤波输出//

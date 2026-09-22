@@ -91,7 +91,7 @@ module angle_process_tb;
         angle_otr_in = 1'b0;
 
         #100_000;
-        $finish;
+        $stop;
     end
 
 

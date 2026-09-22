@@ -36,35 +36,29 @@ module angle_adc_collect_tb;
   ); 
 
    always #10 clk=~clk;
+   #100;
+rst_n = 1'b1;
 
-   initial begin
-    clk =1'b0;
-    rst_n=1'b0;
-    adc_data= 10'512;//因为ADC采集数据为10位，设定中间值方便检测//
-    adc_otr = 0;
+// 等待ADC完成100us上电
+#120_000;
 
-  #100;
-    rst_n=1'b1;//保持复位100NS//
-  #3000;
-    //等待ADC完成上电等待//
-    
-  //模拟角度变会啊//
-  adc_data = 10'600;
+// ADC上电完成后再改变数据
+adc_data = 10'd600;
 
-  #1000;
-  adc_adta= 10'700;
+#1000;
+adc_data = 10'd700;
 
-  #1000;
-  adc_data=10'400;
+#1000;
+adc_data = 10'd400;
 
-  #1000;
-  adc_otr=1'b1;//模拟超量//
+#1000;
+adc_otr = 1'b1;
 
-  #1000;
-  adc_otr=1'b0;
+#1000;
+adc_otr = 1'b0;
 
-  #1000;
-  $finish;
+#100;
+$stop;
 
    end
    always @(negedge clk) begin
