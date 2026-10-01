@@ -1,0 +1,18 @@
+-d D:\Vscode\FPGA\GOWIN\adc_top\impl\gwsynthesis\adc_top.vg
+-p GW2A-55C-PBGA484-8
+-pn GW2A-LV55PG484C8/I7
+-cst D:\Vscode\FPGA\GOWIN\adc_top\src\pin.cst
+-cfg D:\Vscode\FPGA\GOWIN\adc_top\impl\pnr\device.cfg
+-gao_crc 1000000110100100
+-bit
+-tr
+-ph
+-timing
+-cst_error
+-place_option 0
+-route_option 0
+-clock_route_order 0
+-correct_hold 1
+-route_maxfan 23
+-global_freq 100.000
+-rtl_gao

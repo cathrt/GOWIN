@@ -1,0 +1,19 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2A-55C" pn="GW2A-LV55PG484C8/I7">gw2a55c-005</Device>
+    <FileList>
+        <File path="ip/gowin_rpll/gowin_rpll.v" type="file.verilog" enable="1"/>
+        <File path="src/adc.v" type="file.verilog" enable="1"/>
+        <File path="src/adc_driver.v" type="file.verilog" enable="1"/>
+        <File path="src/adc_state.v" type="file.verilog" enable="1"/>
+        <File path="src/adc_top.v" type="file.verilog" enable="1"/>
+        <File path="src/ctrl_clk.v" type="file.verilog" enable="1"/>
+        <File path="src/key.v" type="file.verilog" enable="1"/>
+        <File path="src/key_debounce.v" type="file.verilog" enable="1"/>
+        <File path="src/pin.cst" type="file.cst" enable="1"/>
+        <File path="src/adc.rao" type="file.gao" enable="1"/>
+    </FileList>
+</Project>

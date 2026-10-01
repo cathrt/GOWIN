@@ -1,0 +1,37 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2A-55C" pn="GW2A-LV55PG484C8/I7">gw2a55c-005</Device>
+    <FileList>
+        <File path="ip/integer_multiply_divider/integer_multiply_divider.v" type="file.verilog" enable="1"/>
+        <File path="src/adc.v" type="file.verilog" enable="1"/>
+        <File path="src/adc_clk.v" type="file.verilog" enable="1"/>
+        <File path="src/adc_driver.v" type="file.verilog" enable="1"/>
+        <File path="src/adc_state.v" type="file.verilog" enable="1"/>
+        <File path="src/adc_top.v" type="file.verilog" enable="0"/>
+        <File path="src/control.v" type="file.verilog" enable="1"/>
+        <File path="src/ctrl_clk.v" type="file.verilog" enable="1"/>
+        <File path="src/decode.v" type="file.verilog" enable="1"/>
+        <File path="src/decode_cnt.v" type="file.verilog" enable="1"/>
+        <File path="src/decode_sync.v" type="file.verilog" enable="1"/>
+        <File path="src/decode_top.v" type="file.verilog" enable="0"/>
+        <File path="src/decode_vel.v" type="file.verilog" enable="1"/>
+        <File path="src/key.v" type="file.verilog" enable="1"/>
+        <File path="src/key_debounce.v" type="file.verilog" enable="1"/>
+        <File path="src/lqr.v" type="file.verilog" enable="1"/>
+        <File path="src/motor.v" type="file.verilog" enable="1"/>
+        <File path="src/motor_control.v" type="file.verilog" enable="1"/>
+        <File path="src/motor_top.v" type="file.verilog" enable="0"/>
+        <File path="src/pwm.v" type="file.verilog" enable="1"/>
+        <File path="src/rst_n_sync.v" type="file.verilog" enable="1"/>
+        <File path="src/safe_motor.v" type="file.verilog" enable="1"/>
+        <File path="src/top.v" type="file.verilog" enable="1"/>
+        <File path="src/pin.cst" type="file.cst" enable="1"/>
+        <File path="src/timing.sdc" type="file.sdc" enable="1"/>
+        <File path="src/RIP.rao" type="file.gao" enable="1"/>
+        <File path="src/adc.rao" type="file.gao" enable="0"/>
+        <File path="src/decode.rao" type="file.gao" enable="0"/>
+    </FileList>
+</Project>

@@ -1,0 +1,7240 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>synthesis Report</title>
+<style type="text/css">
+body { font-family: Verdana, Arial, sans-serif; font-size: 12px; }
+div#main_wrapper{ width: 100%; }
+div#content { margin-left: 350px; margin-right: 30px; }
+div#catalog_wrapper {position: fixed; top: 30px; width: 350px; float: left; }
+div#catalog ul { list-style-type: none; }
+div#catalog li { text-align: left; list-style-type:circle; color: #0084ff; margin-top: 3px; margin-bottom: 3px; }
+div#catalog a { display:inline-block; text-decoration: none; color: #0084ff; font-weight: bold; padding: 3px; }
+div#catalog a:visited { color: #0084ff; }
+div#catalog a:hover { color: #fff; background: #0084ff; }
+hr { margin-top: 30px; margin-bottom: 30px; }
+h1, h3 { text-align: center; }
+h1 {margin-top: 50px; }
+table, th, td { border: 1px solid #aaa; }
+table { border-collapse:collapse; margin-top: 10px; margin-bottom: 20px; width: 100%; }
+th, td { padding: 5px 5px 5px 5px; }
+th { color: #fff; font-weight: bold; background-color: #0084ff; }
+table.summary_table td.label { width: 24%; min-width: 200px; background-color: #dee8f4; }
+table.detail_table td.label { min-width: 100px; width: 8%;}
+</style>
+</head>
+<body>
+<div id="main_wrapper">
+<div id="catalog_wrapper">
+<div id="catalog">
+<ul>
+<li><a href="#about" style=" font-size: 16px;">Synthesis Messages</a></li>
+<li><a href="#summary" style=" font-size: 16px;">Synthesis Details</a></li>
+<li><a href="#resource" style=" font-size: 16px;">Resource</a>
+<ul>
+<li><a href="#usage" style=" font-size: 14px;">Resource Usage Summary</a></li>
+<li><a href="#utilization" style=" font-size: 14px;">Resource Utilization Summary</a></li>
+</ul>
+</li>
+<li><a href="#timing" style=" font-size: 16px;">Timing</a>
+<ul>
+<li><a href="#clock" style=" font-size: 14px;">Clock Summary</a></li>
+<li><a href="#performance" style=" font-size: 14px;">Max Frequency Summary</a></li>
+<li><a href="#detail timing" style=" font-size: 14px;">Detail Timing Paths Informations</a></li>
+</ul>
+</li>
+</ul>
+</div><!-- catalog -->
+</div><!-- catalog_wrapper -->
+<div id="content">
+<h1><a name="about">Synthesis Messages</a></h1>
+<table class="summary_table">
+<tr>
+<td class="label">Report Title</td>
+<td>GowinSynthesis Report</td>
+</tr>
+<tr>
+<td class="label">Design File</td>
+<td>D:\Vscode\FPGA\GOWIN\adc_top\ip\gowin_rpll\gowin_rpll.v<br>
+D:\Vscode\FPGA\GOWIN\adc_top\src\adc_top.v<br>
+D:\Vscode\FPGA\GOWIN\adc_top\src\ctrl_clk.v<br>
+D:\Vscode\FPGA\GOWIN\adc_top\src\key.v<br>
+D:\Vscode\FPGA\GOWIN\adc_top\src\key_debounce.v<br>
+D:\Vscode\FPGA\GOWIN\adc_top\src\adc.v<br>
+D:\Vscode\FPGA\GOWIN\adc_top\src\adc_driver.v<br>
+D:\Vscode\FPGA\GOWIN\adc_top\src\adc_state.v<br>
+D:\Gowin\Gowin_V1.9.12.03_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_crc32.v<br>
+D:\Gowin\Gowin_V1.9.12.03_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_match.v<br>
+D:\Gowin\Gowin_V1.9.12.03_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_mem_ctrl.v<br>
+D:\Gowin\Gowin_V1.9.12.03_x64\IDE\data\ipcores\GAO\GW_AO_0\gw_ao_top.v<br>
+D:\Gowin\Gowin_V1.9.12.03_x64\IDE\data\ipcores\GAO\GW_CON\gw_con_top.v<br>
+D:\Gowin\Gowin_V1.9.12.03_x64\IDE\data\ipcores\gw_jtag.v<br>
+D:\Vscode\FPGA\GOWIN\adc_top\impl\gwsynthesis\RTL_GAO\gw_gao_top.v<br>
+</td>
+</tr>
+<tr>
+<td class="label">GowinSynthesis Constraints File</td>
+<td>---</td>
+</tr>
+<tr>
+<td class="label">Tool Version</td>
+<td>V1.9.12.03 (64-bit)</td>
+</tr>
+<tr>
+<td class="label">Part Number</td>
+<td>GW2A-LV55PG484C8/I7</td>
+</tr>
+<tr>
+<td class="label">Device</td>
+<td>GW2A-55</td>
+</tr>
+<tr>
+<td class="label">Device Version</td>
+<td>C</td>
+</tr>
+<tr>
+<td class="label">Created Time</td>
+<td>Tue Sep 29 00:41:45 2026
+</td>
+</tr>
+<tr>
+<td class="label">Legal Announcement</td>
+<td>Copyright (C)2014-2026 Gowin Semiconductor Corporation. ALL rights reserved.</td>
+</tr>
+</table>
+<h1><a name="summary">Synthesis Details</a></h1>
+<table class="summary_table">
+<tr>
+<td class="label">Top Level Module</td>
+<td>adc_top</td>
+</tr>
+<tr>
+<td class="label">Synthesis Process</td>
+<td>Running parser:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.218s, Elapsed time = 0h 0m 0.252s, Peak memory usage = 982.973MB<br/>Running netlist conversion:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0s, Peak memory usage = 0MB<br/>Running device independent optimization:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 0: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.071s, Peak memory usage = 982.973MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 1: CPU time = 0h 0m 0.031s, Elapsed time = 0h 0m 0.038s, Peak memory usage = 982.973MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Optimizing Phase 2: CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.095s, Peak memory usage = 982.973MB<br/>Running inference:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 0: CPU time = 0h 0m 0.031s, Elapsed time = 0h 0m 0.035s, Peak memory usage = 982.973MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 1: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.003s, Peak memory usage = 982.973MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 2: CPU time = 0h 0m 0s, Elapsed time = 0h 0m 0.007s, Peak memory usage = 982.973MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Inferring Phase 3: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.006s, Peak memory usage = 982.973MB<br/>Running technical mapping:<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 0: CPU time = 0h 0m 0.093s, Elapsed time = 0h 0m 0.091s, Peak memory usage = 982.973MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 1: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.021s, Peak memory usage = 982.973MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 2: CPU time = 0h 0m 0.015s, Elapsed time = 0h 0m 0.011s, Peak memory usage = 982.973MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 3: CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s, Peak memory usage = 982.973MB<br/>&nbsp;&nbsp;&nbsp;&nbsp;Tech-Mapping Phase 4: CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.087s, Peak memory usage = 982.973MB<br/>Generate output files:<br/>&nbsp;&nbsp;&nbsp;&nbsp;CPU time = 0h 0m 0.078s, Elapsed time = 0h 0m 0.084s, Peak memory usage = 982.973MB<br/></td>
+</tr>
+<tr>
+<td class="label">Total Time and Memory Usage</td>
+<td>CPU time = 0h 0m 1s, Elapsed time = 0h 0m 1s, Peak memory usage = 982.973MB</td>
+</tr>
+</table>
+<h1><a name="resource">Resource</a></h1>
+<h2><a name="usage">Resource Usage Summary</a></h2>
+<table class="summary_table">
+<tr>
+<td class="label"><b>Resource</b></td>
+<td><b>Usage</b></td>
+</tr>
+<tr>
+<td class="label"><b>I/O Port </b></td>
+<td>90</td>
+</tr>
+<tr>
+<td class="label"><b>I/O Buf </b></td>
+<td>90</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspIBUF</td>
+<td>19</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspOBUF</td>
+<td>71</td>
+</tr>
+<tr>
+<td class="label"><b>Register </b></td>
+<td>792</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFF</td>
+<td>142</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFE</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFR</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFP</td>
+<td>15</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFPE</td>
+<td>36</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFC</td>
+<td>93</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspDFFCE</td>
+<td>504</td>
+</tr>
+<tr>
+<td class="label"><b>LUT </b></td>
+<td>750</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspLUT2</td>
+<td>94</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspLUT3</td>
+<td>183</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspLUT4</td>
+<td>473</td>
+</tr>
+<tr>
+<td class="label"><b>ALU </b></td>
+<td>117</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspALU</td>
+<td>117</td>
+</tr>
+<tr>
+<td class="label"><b>SSRAM </b></td>
+<td>3</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspRAM16SDP4</td>
+<td>3</td>
+</tr>
+<tr>
+<td class="label"><b>INV </b></td>
+<td>12</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspINV</td>
+<td>12</td>
+</tr>
+<tr>
+<td class="label"><b>BSRAM </b></td>
+<td>9</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspSDPB</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspSDPX9B</td>
+<td>8</td>
+</tr>
+<tr>
+<td class="label"><b>CLOCK </b></td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbsprPLL</td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label"><b>Black Box </b></td>
+<td>1</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp&nbsp&nbspGW_JTAG</td>
+<td>1</td>
+</tr>
+</table>
+<h2><a name="utilization">Resource Utilization Summary</a></h2>
+<table class="summary_table">
+<tr>
+<td class="label"><b>Resource</b></td>
+<td><b>Usage</b></td>
+<td><b>Utilization</b></td>
+</tr>
+<tr>
+<td class="label">Logic</td>
+<td>897(762 LUT, 117 ALU, 3 RAM16) / 54720</td>
+<td>2%</td>
+</tr>
+<tr>
+<td class="label">Register</td>
+<td>792 / 42000</td>
+<td>2%</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp--Register as Latch</td>
+<td>0 / 42000</td>
+<td>0%</td>
+</tr>
+<tr>
+<td class="label">&nbsp&nbsp--Register as FF</td>
+<td>792 / 42000</td>
+<td>2%</td>
+</tr>
+<tr>
+<td class="label">BSRAM</td>
+<td>9 / 140</td>
+<td>7%</td>
+</tr>
+</table>
+<h1><a name="timing">Timing</a></h1>
+<h2><a name="clock">Clock Summary:</a></h2>
+<table class="summary_table">
+<tr>
+<th>NO.</th>
+<th>Clock Name</th>
+<th>Type</th>
+<th>Period</th>
+<th>Frequency(MHz)</th>
+<th>Rise</th>
+<th>Fall</th>
+<th>Source</th>
+<th>Master</th>
+<th>Object</th>
+</tr>
+<tr>
+<td>1</td>
+<td>clk</td>
+<td>Base</td>
+<td>20.000</td>
+<td>50.000</td>
+<td>0.000</td>
+<td>10.000</td>
+<td> </td>
+<td> </td>
+<td>clk_ibuf/I </td>
+</tr>
+<tr>
+<td>2</td>
+<td>tck_pad_i</td>
+<td>Base</td>
+<td>50.000</td>
+<td>20.000</td>
+<td>0.000</td>
+<td>25.000</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/tck_ibuf/I </td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUT.default_gen_clk</td>
+<td>Generated</td>
+<td>20.000</td>
+<td>50.000</td>
+<td>0.000</td>
+<td>10.000</td>
+<td>clk_ibuf/I</td>
+<td>clk</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUT </td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUTP.default_gen_clk</td>
+<td>Generated</td>
+<td>20.000</td>
+<td>50.000</td>
+<td>0.000</td>
+<td>10.000</td>
+<td>clk_ibuf/I</td>
+<td>clk</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUTP </td>
+</tr>
+<tr>
+<td>5</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUTD.default_gen_clk</td>
+<td>Generated</td>
+<td>80.000</td>
+<td>12.500</td>
+<td>0.000</td>
+<td>40.000</td>
+<td>clk_ibuf/I</td>
+<td>clk</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUTD </td>
+</tr>
+<tr>
+<td>6</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUTD3.default_gen_clk</td>
+<td>Generated</td>
+<td>60.000</td>
+<td>16.667</td>
+<td>0.000</td>
+<td>30.000</td>
+<td>clk_ibuf/I</td>
+<td>clk</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUTD3 </td>
+</tr>
+</table>
+<h2><a name="performance">Max Frequency Summary:</a></h2>
+<table class="summary_table">
+<tr>
+<th>NO.</th>
+<th>Clock Name</th>
+<th>Constraint</th>
+<th>Actual Fmax</th>
+<th>Logic Level</th>
+<th>Entity</th>
+</tr>
+<tr>
+<td>1</td>
+<td>clk</td>
+<td>50.000(MHz)</td>
+<td>172.891(MHz)</td>
+<td>6</td>
+<td>TOP</td>
+</tr>
+<tr>
+<td>2</td>
+<td>tck_pad_i</td>
+<td>20.000(MHz)</td>
+<td>170.999(MHz)</td>
+<td>6</td>
+<td>TOP</td>
+</tr>
+<tr>
+<td>3</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUT.default_gen_clk</td>
+<td>50.000(MHz)</td>
+<td>172.711(MHz)</td>
+<td>8</td>
+<td>TOP</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Gowin_rPLL_inst/rpll_inst/CLKOUTD.default_gen_clk</td>
+<td>12.500(MHz)</td>
+<td>103.294(MHz)</td>
+<td>7</td>
+<td>TOP</td>
+</tr>
+</table>
+<h2><a name="detail timing">Detail Timing Paths Information</a></h2>
+<h3>Path&nbsp1</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>3.507</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.784</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_8_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_7_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_8_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_8_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s13/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>9</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s13/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_6_s8/I2</td>
+</tr>
+<tr>
+<td>53.590</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>6</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_6_s8/F</td>
+</tr>
+<tr>
+<td>54.064</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_7_s12/I1</td>
+</tr>
+<tr>
+<td>54.619</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_7_s12/F</td>
+</tr>
+<tr>
+<td>55.093</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_7_s10/I3</td>
+</tr>
+<tr>
+<td>55.464</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_7_s10/F</td>
+</tr>
+<tr>
+<td>55.938</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_7_s8/I3</td>
+</tr>
+<tr>
+<td>56.309</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_7_s8/F</td>
+</tr>
+<tr>
+<td>56.784</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_7_s0/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_7_s0/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_7_s0</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_7_s0</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>6</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.305, 42.836%; route: 2.844, 52.853%; tC2Q: 0.232, 4.311%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp2</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.168</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.123</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_1_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n553_s1/I2</td>
+</tr>
+<tr>
+<td>55.648</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n553_s1/F</td>
+</tr>
+<tr>
+<td>56.122</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_1_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_1_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_1_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_1_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.118, 44.873%; route: 2.370, 50.212%; tC2Q: 0.232, 4.915%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp3</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.168</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.123</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_3_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n551_s1/I2</td>
+</tr>
+<tr>
+<td>55.648</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n551_s1/F</td>
+</tr>
+<tr>
+<td>56.122</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_3_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_3_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_3_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_3_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.118, 44.873%; route: 2.370, 50.212%; tC2Q: 0.232, 4.915%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp4</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.168</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.123</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_5_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n549_s1/I2</td>
+</tr>
+<tr>
+<td>55.648</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n549_s1/F</td>
+</tr>
+<tr>
+<td>56.122</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_5_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_5_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_5_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_5_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.118, 44.873%; route: 2.370, 50.212%; tC2Q: 0.232, 4.915%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp5</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.168</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.123</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_6_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n548_s1/I2</td>
+</tr>
+<tr>
+<td>55.648</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n548_s1/F</td>
+</tr>
+<tr>
+<td>56.122</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_6_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_6_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_6_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_6_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.118, 44.873%; route: 2.370, 50.212%; tC2Q: 0.232, 4.915%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp6</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.168</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.123</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_8_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n546_s1/I2</td>
+</tr>
+<tr>
+<td>55.648</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n546_s1/F</td>
+</tr>
+<tr>
+<td>56.122</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_8_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_8_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_8_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_8_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.118, 44.873%; route: 2.370, 50.212%; tC2Q: 0.232, 4.915%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp7</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.168</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.123</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_9_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n545_s1/I2</td>
+</tr>
+<tr>
+<td>55.648</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n545_s1/F</td>
+</tr>
+<tr>
+<td>56.122</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_9_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_9_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_9_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_9_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.118, 44.873%; route: 2.370, 50.212%; tC2Q: 0.232, 4.915%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp8</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.186</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.104</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_loop_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_loop_s4/I0</td>
+</tr>
+<tr>
+<td>55.744</td>
+<td>0.549</td>
+<td>tINS</td>
+<td>FR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_loop_s4/F</td>
+</tr>
+<tr>
+<td>56.104</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_loop_s1/CE</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_loop_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_loop_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_loop_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.214, 47.086%; route: 2.256, 47.980%; tC2Q: 0.232, 4.934%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp9</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.217</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.073</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_10_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_0_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>3</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_0_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_10_s17/I0</td>
+</tr>
+<tr>
+<td>52.625</td>
+<td>0.517</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_10_s17/F</td>
+</tr>
+<tr>
+<td>53.099</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_10_s15/I0</td>
+</tr>
+<tr>
+<td>53.616</td>
+<td>0.517</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_10_s15/F</td>
+</tr>
+<tr>
+<td>54.090</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_10_s12/I0</td>
+</tr>
+<tr>
+<td>54.607</td>
+<td>0.517</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_10_s12/F</td>
+</tr>
+<tr>
+<td>55.081</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_10_s11/I0</td>
+</tr>
+<tr>
+<td>55.598</td>
+<td>0.517</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_10_s11/F</td>
+</tr>
+<tr>
+<td>56.072</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_10_s0/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_10_s0/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_10_s0</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_10_s0</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.068, 44.283%; route: 2.370, 50.749%; tC2Q: 0.232, 4.968%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp10</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.250</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.041</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_2_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n552_s1/I3</td>
+</tr>
+<tr>
+<td>55.566</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n552_s1/F</td>
+</tr>
+<tr>
+<td>56.040</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_2_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_2_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_2_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_2_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.036, 43.898%; route: 2.370, 51.100%; tC2Q: 0.232, 5.002%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp11</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.250</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.041</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_4_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n550_s1/I3</td>
+</tr>
+<tr>
+<td>55.566</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n550_s1/F</td>
+</tr>
+<tr>
+<td>56.040</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_4_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_4_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_4_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_4_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.036, 43.898%; route: 2.370, 51.100%; tC2Q: 0.232, 5.002%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp12</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.250</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.041</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_7_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n547_s1/I3</td>
+</tr>
+<tr>
+<td>55.566</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n547_s1/F</td>
+</tr>
+<tr>
+<td>56.040</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_7_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_7_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_7_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_7_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.036, 43.898%; route: 2.370, 51.100%; tC2Q: 0.232, 5.002%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp13</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.250</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.041</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_10_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_5_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s11/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>11</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s4/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s2/I3</td>
+</tr>
+<tr>
+<td>55.566</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s2/F</td>
+</tr>
+<tr>
+<td>56.040</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_10_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_10_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_10_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_10_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 2.036, 43.898%; route: 2.370, 51.100%; tC2Q: 0.232, 5.002%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp14</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.287</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>56.002</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_8_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_9_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_8_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_8_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s13/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>9</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s13/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s10/I3</td>
+</tr>
+<tr>
+<td>53.508</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>5</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s10/F</td>
+</tr>
+<tr>
+<td>53.982</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_9_s12/I0</td>
+</tr>
+<tr>
+<td>54.499</td>
+<td>0.517</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_9_s12/F</td>
+</tr>
+<tr>
+<td>54.973</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_9_s10/I1</td>
+</tr>
+<tr>
+<td>55.528</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_9_s10/F</td>
+</tr>
+<tr>
+<td>56.002</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_9_s0/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_9_s0/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_9_s0</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_9_s0</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.998, 43.435%; route: 2.370, 51.522%; tC2Q: 0.232, 5.043%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp15</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.352</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.938</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_9_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_5_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_9_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_9_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_3_s6/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>8</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_3_s6/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_5_s8/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_5_s8/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_5_s9/I3</td>
+</tr>
+<tr>
+<td>54.537</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_5_s9/F</td>
+</tr>
+<tr>
+<td>55.011</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_5_s6/I2</td>
+</tr>
+<tr>
+<td>55.465</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_5_s6/F</td>
+</tr>
+<tr>
+<td>55.938</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_5_s0/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_5_s0/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_5_s0</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_5_s0</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.934, 42.637%; route: 2.370, 52.248%; tC2Q: 0.232, 5.115%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp16</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.352</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.938</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_9_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_8_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_9_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_9_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_3_s6/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>8</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_3_s6/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s14/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s14/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s16/I3</td>
+</tr>
+<tr>
+<td>54.537</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s16/F</td>
+</tr>
+<tr>
+<td>55.011</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s9/I2</td>
+</tr>
+<tr>
+<td>55.465</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s9/F</td>
+</tr>
+<tr>
+<td>55.938</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_8_s0/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_8_s0/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_8_s0</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_8_s0</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.934, 42.637%; route: 2.370, 52.248%; tC2Q: 0.232, 5.115%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp17</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.434</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.856</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_8_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_6_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_8_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_8_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s13/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>9</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_8_s13/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_4_s6/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_4_s6/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_6_s10/I3</td>
+</tr>
+<tr>
+<td>54.537</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_6_s10/F</td>
+</tr>
+<tr>
+<td>55.011</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_6_s7/I3</td>
+</tr>
+<tr>
+<td>55.382</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_6_s7/F</td>
+</tr>
+<tr>
+<td>55.856</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_6_s0/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_6_s0/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_6_s0</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_6_s0</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.852, 41.581%; route: 2.370, 53.210%; tC2Q: 0.232, 5.209%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp18</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.457</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.833</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_rem_9_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_rem_9_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>3</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_rem_9_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s7/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s7/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s5/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>3</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s5/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s4/I3</td>
+</tr>
+<tr>
+<td>54.537</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s4/F</td>
+</tr>
+<tr>
+<td>55.011</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s3/I2</td>
+</tr>
+<tr>
+<td>55.474</td>
+<td>0.462</td>
+<td>tINS</td>
+<td>FR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s3/F</td>
+</tr>
+<tr>
+<td>55.833</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s1/CE</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.943, 43.850%; route: 2.256, 50.914%; tC2Q: 0.232, 5.236%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp19</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>4.819</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.471</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_1_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/start_reg_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_1_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>4</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_1_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s23/I0</td>
+</tr>
+<tr>
+<td>52.658</td>
+<td>0.549</td>
+<td>tINS</td>
+<td>FR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s23/COUT</td>
+</tr>
+<tr>
+<td>52.658</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>RR</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s24/CIN</td>
+</tr>
+<tr>
+<td>52.693</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>RF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s24/COUT</td>
+</tr>
+<tr>
+<td>52.693</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s25/CIN</td>
+</tr>
+<tr>
+<td>52.728</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s25/COUT</td>
+</tr>
+<tr>
+<td>52.728</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s26/CIN</td>
+</tr>
+<tr>
+<td>52.763</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s26/COUT</td>
+</tr>
+<tr>
+<td>52.763</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s27/CIN</td>
+</tr>
+<tr>
+<td>52.798</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s27/COUT</td>
+</tr>
+<tr>
+<td>52.798</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s28/CIN</td>
+</tr>
+<tr>
+<td>52.833</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s28/COUT</td>
+</tr>
+<tr>
+<td>52.833</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s29/CIN</td>
+</tr>
+<tr>
+<td>52.869</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s29/COUT</td>
+</tr>
+<tr>
+<td>52.869</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s30/CIN</td>
+</tr>
+<tr>
+<td>52.904</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s30/COUT</td>
+</tr>
+<tr>
+<td>52.904</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s31/CIN</td>
+</tr>
+<tr>
+<td>52.939</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3116_s31/COUT</td>
+</tr>
+<tr>
+<td>53.413</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/start_reg1_s1/I1</td>
+</tr>
+<tr>
+<td>53.968</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/start_reg1_s1/F</td>
+</tr>
+<tr>
+<td>54.442</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/start_reg1_s0/I1</td>
+</tr>
+<tr>
+<td>54.997</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/start_reg1_s0/F</td>
+</tr>
+<tr>
+<td>55.471</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/start_reg_s0/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/start_reg_s0/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/start_reg_s0</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/start_reg_s0</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>6</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.941, 47.697%; route: 1.896, 46.601%; tC2Q: 0.232, 5.702%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp20</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>5.076</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.214</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/internal_reg_trig_level_max_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/triger_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/internal_reg_trig_level_max_0_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/internal_reg_trig_level_max_0_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3160_s0/I1</td>
+</tr>
+<tr>
+<td>52.679</td>
+<td>0.570</td>
+<td>tINS</td>
+<td>FR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3160_s0/COUT</td>
+</tr>
+<tr>
+<td>52.679</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>RR</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3161_s0/CIN</td>
+</tr>
+<tr>
+<td>52.714</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>RF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3161_s0/COUT</td>
+</tr>
+<tr>
+<td>52.714</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3162_s0/CIN</td>
+</tr>
+<tr>
+<td>52.749</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3162_s0/COUT</td>
+</tr>
+<tr>
+<td>52.749</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3163_s0/CIN</td>
+</tr>
+<tr>
+<td>52.784</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>5</td>
+<td>gw_gao_inst_0/u_la0_top/n3163_s0/COUT</td>
+</tr>
+<tr>
+<td>53.258</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3204_s1/I2</td>
+</tr>
+<tr>
+<td>53.711</td>
+<td>0.453</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3204_s1/F</td>
+</tr>
+<tr>
+<td>54.185</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3204_s0/I1</td>
+</tr>
+<tr>
+<td>54.740</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3204_s0/F</td>
+</tr>
+<tr>
+<td>55.214</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/triger_s0/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/triger_s0/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/triger_s0</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/triger_s0</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.684, 44.170%; route: 1.896, 49.743%; tC2Q: 0.232, 6.087%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp21</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>5.095</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.195</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_3_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_0_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_3_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_max_3_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s8/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s8/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s5/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n544_s5/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n554_s2/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n554_s2/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_0_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_0_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_0_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_0_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>4</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.665, 43.897%; route: 1.896, 49.986%; tC2Q: 0.232, 6.117%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp22</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>5.095</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.195</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_rem_9_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_rem_9_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>3</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_rem_9_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s7/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s7/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s5/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>3</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s5/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n423_s3/I1</td>
+</tr>
+<tr>
+<td>54.722</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/n423_s3/F</td>
+</tr>
+<tr>
+<td>55.195</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>4</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.665, 43.897%; route: 1.896, 49.986%; tC2Q: 0.232, 6.117%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp23</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>5.158</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.132</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/internal_reg_trig_level_max_0_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/triger_level_cnt_2_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/internal_reg_trig_level_max_0_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/internal_reg_trig_level_max_0_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3160_s0/I1</td>
+</tr>
+<tr>
+<td>52.679</td>
+<td>0.570</td>
+<td>tINS</td>
+<td>FR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3160_s0/COUT</td>
+</tr>
+<tr>
+<td>52.679</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>RR</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3161_s0/CIN</td>
+</tr>
+<tr>
+<td>52.714</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>RF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3161_s0/COUT</td>
+</tr>
+<tr>
+<td>52.714</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3162_s0/CIN</td>
+</tr>
+<tr>
+<td>52.749</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3162_s0/COUT</td>
+</tr>
+<tr>
+<td>52.749</td>
+<td>0.000</td>
+<td>tNET</td>
+<td>FF</td>
+<td>2</td>
+<td>gw_gao_inst_0/u_la0_top/n3163_s0/CIN</td>
+</tr>
+<tr>
+<td>52.784</td>
+<td>0.035</td>
+<td>tINS</td>
+<td>FF</td>
+<td>5</td>
+<td>gw_gao_inst_0/u_la0_top/n3163_s0/COUT</td>
+</tr>
+<tr>
+<td>53.258</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3184_s2/I1</td>
+</tr>
+<tr>
+<td>53.813</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3184_s2/F</td>
+</tr>
+<tr>
+<td>54.287</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3183_s1/I3</td>
+</tr>
+<tr>
+<td>54.658</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/n3183_s1/F</td>
+</tr>
+<tr>
+<td>55.132</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/triger_level_cnt_2_s1/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/triger_level_cnt_2_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/triger_level_cnt_2_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/triger_level_cnt_2_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>5</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.602, 42.943%; route: 1.896, 50.836%; tC2Q: 0.232, 6.221%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp24</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>5.194</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.097</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_rem_9_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_rem_9_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>3</td>
+<td>gw_gao_inst_0/u_la0_top/capture_mem_addr_rem_9_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s7/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s7/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s5/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>3</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_wr_s5/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s7/I1</td>
+</tr>
+<tr>
+<td>54.736</td>
+<td>0.570</td>
+<td>tINS</td>
+<td>FR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s7/F</td>
+</tr>
+<tr>
+<td>55.097</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1/CE</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/mem_addr_inc_en_s1</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>4</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.680, 45.479%; route: 1.782, 48.241%; tC2Q: 0.232, 6.280%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+<h3>Path&nbsp25</h3>
+<b>Path Summary:</b></br>
+<table class="summary_table">
+<tr>
+<td class="label">Slack</td>
+<td>5.279</td>
+</tr>
+<tr>
+<td class="label">Data Arrival Time</td>
+<td>55.012</td>
+</tr>
+<tr>
+<td class="label">Data Required Time</td>
+<td>60.290</td>
+</tr>
+<tr>
+<td class="label">From</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_9_s0</td>
+</tr>
+<tr>
+<td class="label">To</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_4_s0</td>
+</tr>
+<tr>
+<td class="label">Launch Clk</td>
+<td>tck_pad_i[R]</td>
+</tr>
+<tr>
+<td class="label">Latch Clk</td>
+<td>clk[R]</td>
+</tr>
+</table>
+<b>Data Arrival Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>50.000</td>
+<td>50.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>tck_pad_i</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/I</td>
+</tr>
+<tr>
+<td>50.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/tck_ibuf/O</td>
+</tr>
+<tr>
+<td>50.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_pad_i</td>
+</tr>
+<tr>
+<td>51.042</td>
+<td>0.683</td>
+<td>tINS</td>
+<td>RR</td>
+<td>331</td>
+<td>gw_gao_inst_0/u_gw_jtag_s/tck_o</td>
+</tr>
+<tr>
+<td>51.403</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_9_s0/CLK</td>
+</tr>
+<tr>
+<td>51.634</td>
+<td>0.232</td>
+<td>tC2Q</td>
+<td>RF</td>
+<td>5</td>
+<td>gw_gao_inst_0/u_la0_top/capture_windows_num_9_s0/Q</td>
+</tr>
+<tr>
+<td>52.108</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_3_s6/I1</td>
+</tr>
+<tr>
+<td>52.664</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>8</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_3_s6/F</td>
+</tr>
+<tr>
+<td>53.138</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_4_s7/I1</td>
+</tr>
+<tr>
+<td>53.693</td>
+<td>0.555</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_4_s7/F</td>
+</tr>
+<tr>
+<td>54.167</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_4_s8/I3</td>
+</tr>
+<tr>
+<td>54.537</td>
+<td>0.371</td>
+<td>tINS</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_4_s8/F</td>
+</tr>
+<tr>
+<td>55.011</td>
+<td>0.474</td>
+<td>tNET</td>
+<td>FF</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_4_s0/D</td>
+</tr>
+</table>
+<b>Data Required Path:</b>
+<table class="summary_table">
+<tr>
+<th>AT</th>
+<th>DELAY</th>
+<th>TYPE</th>
+<th>RF</th>
+<th>FANOUT</th>
+<th>NODE</th>
+</tr>
+<tr>
+<td>60.000</td>
+<td>60.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>active clock edge time</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td> </td>
+<td> </td>
+<td> </td>
+<td>clk</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tCL</td>
+<td>RR</td>
+<td>1</td>
+<td>clk_ibuf/I</td>
+</tr>
+<tr>
+<td>60.000</td>
+<td>0.000</td>
+<td>tINS</td>
+<td>RR</td>
+<td>326</td>
+<td>clk_ibuf/O</td>
+</tr>
+<tr>
+<td>60.360</td>
+<td>0.360</td>
+<td>tNET</td>
+<td>RR</td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_4_s0/CLK</td>
+</tr>
+<tr>
+<td>60.325</td>
+<td>-0.035</td>
+<td>tUnc</td>
+<td> </td>
+<td> </td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_4_s0</td>
+</tr>
+<tr>
+<td>60.290</td>
+<td>-0.035</td>
+<td>tSu</td>
+<td> </td>
+<td>1</td>
+<td>gw_gao_inst_0/u_la0_top/u_ao_mem_ctrl/capture_mem_addr_start_reg_4_s0</td>
+</tr>
+</table>
+<b>Path Statistics:</b>
+<table class="summary_table">
+<tr>
+<td class="label">Clock Skew:</td>
+<td>-1.043</td>
+</tr>
+<tr>
+<td class="label">Setup Relationship:</td>
+<td>10.000</td>
+</tr>
+<tr>
+<td class="label">Logic Level:</td>
+<td>4</td>
+</tr>
+<tr>
+<td class="label">Arrival Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+<tr>
+<td class="label">Arrival Data Path Delay:</td><td> cell: 1.481, 41.036%; route: 1.896, 52.536%; tC2Q: 0.232, 6.428%</td></tr>
+<tr>
+<td class="label">Required Clock Path Delay:</td><td> cell: 0.683, 48.663%; route: 0.720, 51.337%</td></tr>
+</table>
+<br/>
+</div><!-- content -->
+</div><!-- main_wrapper -->
+</body>
+</html>

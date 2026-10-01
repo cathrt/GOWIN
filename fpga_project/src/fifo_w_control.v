@@ -5,7 +5,7 @@ FIFO写入模块
 3. 随后以 50MHz 时钟连续 22 拍突发写入 FIFO（18 字节数据 + 4 字节 VOFA+ 帧尾）
 */
 module fifo_w_control#(
-    parameter WIDTH_DATA = 32,
+    parameter WIDTH_DATA = 16,
     parameter WIDTH_BYTE = 8,
     parameter integer DECIM_N = 5,          // 500Hz / 5 = 100Hz (每 10ms 打包一次)(5分频)
     parameter [WIDTH_BYTE-1:0] TAIL_BYTE0 = 8'h00,      // VOFA+ 协议帧尾

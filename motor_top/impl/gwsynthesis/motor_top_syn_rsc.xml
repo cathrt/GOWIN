@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Module name="motor_top" Register="4" Lut="5" T_Register="99(4)" T_Alu="9(0)" T_Lut="177(5)">
+ <SubModule name="key_inst" T_Register="72(0)" T_Lut="136(0)">
+  <SubModule name="gen_key_debounce[0].u_key_debounce" Register="24" Lut="45" T_Register="24(24)" T_Lut="45(45)"/>
+  <SubModule name="gen_key_debounce[1].u_key_debounce" Register="24" Lut="45" T_Register="24(24)" T_Lut="45(45)"/>
+  <SubModule name="gen_key_debounce[2].u_key_debounce" Register="24" Lut="46" T_Register="24(24)" T_Lut="46(46)"/>
+ </SubModule>
+ <SubModule name="motor_inst" T_Register="23(0)" T_Alu="9(0)" T_Lut="36(0)">
+  <SubModule name="motor_control_inst" Register="4" Lut="4" T_Register="4(4)" T_Lut="4(4)"/>
+  <SubModule name="pwm_inst" Register="19" Alu="9" Lut="32" T_Register="19(19)" T_Alu="9(9)" T_Lut="32(32)"/>
+ </SubModule>
+</Module>

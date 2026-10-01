@@ -1,0 +1,16 @@
+<?xml version="1" encoding="UTF-8"?>
+<!DOCTYPE gowin-fpga-project>
+<Project>
+    <Template>FPGA</Template>
+    <Version>5</Version>
+    <Device name="GW2A-55C" pn="GW2A-LV55PG484C8/I7">gw2a55c-005</Device>
+    <FileList>
+        <File path="src/key.v" type="file.verilog" enable="1"/>
+        <File path="src/key_debounce.v" type="file.verilog" enable="1"/>
+        <File path="src/motor.v" type="file.verilog" enable="1"/>
+        <File path="src/motor_control.v" type="file.verilog" enable="1"/>
+        <File path="src/motor_top.v" type="file.verilog" enable="1"/>
+        <File path="src/pwm.v" type="file.verilog" enable="1"/>
+        <File path="src/motor_top.cst" type="file.cst" enable="1"/>
+    </FileList>
+</Project>

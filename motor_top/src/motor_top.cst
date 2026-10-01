@@ -1,0 +1,27 @@
+//Copyright (C)2014-2026 Gowin Semiconductor Corporation.
+//All rights reserved. 
+//File Title: Physical Constraints file
+//Tool Version: V1.9.12.03 (64-bit)
+//Part Number: GW2A-LV55PG484C8/I7
+//Device: GW2A-55
+//Device Version: C
+//Created Time: Mon 09 28 15:44:20 2026
+
+IO_LOC "pwm_out" Y18;
+IO_PORT "pwm_out" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "ain2" Y19;
+IO_PORT "ain2" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "ain1" Y17;
+IO_PORT "ain1" IO_TYPE=LVCMOS33 PULL_MODE=UP DRIVE=8 BANK_VCCIO=3.3;
+IO_LOC "key_in[2]" U20;
+IO_PORT "key_in[2]" IO_TYPE=LVCMOS15 PULL_MODE=UP BANK_VCCIO=1.5;
+IO_LOC "key_in[1]" R18;
+IO_PORT "key_in[1]" IO_TYPE=LVCMOS15 PULL_MODE=UP BANK_VCCIO=1.5;
+IO_LOC "key_in[0]" T18;
+IO_PORT "key_in[0]" IO_TYPE=LVCMOS15 PULL_MODE=UP BANK_VCCIO=1.5;
+IO_LOC "rst_n" AB3;
+IO_PORT "rst_n" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
+IO_LOC "clk" M19;
+IO_PORT "clk" IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
+IO_LOC "key_in[3]" T20;
+IO_PORT "key_in[3]" IO_TYPE=LVCMOS15 PULL_MODE=UP BANK_VCCIO=1.5
