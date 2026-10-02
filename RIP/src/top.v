@@ -36,6 +36,7 @@ module top (
     localparam integer WIDTH_K        = 32;           // 增益参数位宽 (Q16.16)
     localparam integer SHIFT_Q        = 16;           // 定点数还原右移位数
     localparam integer DUTY_MAX       = 2500;         // 20kHz PWM 最大满幅计数值
+    localparam integer DEAD_ZONE      = 50;          // 电机死区补偿值
 
     // 安全保护阈值参数
     localparam integer PROTECT_PEND   = 57;           // 摆杆跌倒限幅 (约 20°)
@@ -227,16 +228,17 @@ module top (
     );
 
     // 9. 电机 PWM 与方向驱动模块
-    motor #(
-        .DUTY_MAX(DUTY_MAX)
-    ) motor_inst (
-        .clk        (clk),
-        .rst_n      (rst_n),
+    motor # (
+        .DUTY_MAX(DUTY_MAX),
+        .DEAD_ZONE(DEAD_ZONE)
+    )motor_inst (
+        .clk(clk),
+        .rst_n(rst_n),
         .duty_signed(duty_signed),
-        .motor_stop (motor_stop),
-        .ain1       (ain1),
-        .ain2       (ain2),
-        .pwm_out    (pwm_out)
+        .motor_stop(motor_stop),
+        .ain1(ain1),
+        .ain2(ain2),
+        .pwm_out(pwm_out)
     );
 
 endmodule

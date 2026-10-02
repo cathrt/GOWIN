@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 /*
 位置计数器
 功能：
@@ -24,25 +25,25 @@ module decode_cnt #(
     output reg signed [WIDTH_DATA-1:0] pos_arm      // 水平臂当前位置，经过 1ms 锁存的数据
 );
 
-// 计数器
-//reg [WIDTH_DATA-1:0] cur_pos;   //当前电机转动信息，1 代表 360/1040 度
-always @(posedge clk or negedge rst_n) begin
-    if(!rst_n) begin
-      cur_pos <= {WIDTH_DATA{1'b0}};     
-    end else if(pos_clr) begin
-		cur_pos <= {WIDTH_DATA{1'b0}};     // 接收到清零信号时清零
-    end else if(encode_pulse) begin
-        if(!motor_dir) begin
-            cur_pos <= cur_pos + 1'b1;  // 正转+1
-        end
-        else if(motor_dir) begin
-            cur_pos <= cur_pos - 1'b1;  // 反转-1
+    // 计数器
+    //reg [WIDTH_DATA-1:0] cur_pos;   //当前电机转动信息，1 代表 360/1040 度
+    always @(posedge clk or negedge rst_n) begin
+        if(!rst_n) begin
+        cur_pos <= {WIDTH_DATA{1'b0}};     
+        end else if(pos_clr) begin
+            cur_pos <= {WIDTH_DATA{1'b0}};     // 接收到清零信号时清零
+        end else if(encode_pulse) begin
+            if(!motor_dir) begin
+                cur_pos <= cur_pos + 1'b1;  // 正转+1
+            end
+            else if(motor_dir) begin
+                cur_pos <= cur_pos - 1'b1;  // 反转-1
+            end
         end
     end
-end
 
-// 控制节拍快照锁存器 (状态向量时间对齐)
-always @(posedge clk or negedge rst_n) begin
+    // 控制节拍快照锁存器 (状态向量时间对齐)
+    always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             pos_arm <= {WIDTH_DATA{1'b0}};
         end else if (pos_clr) begin

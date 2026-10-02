@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 /*
 按键阵列顶层封装模块
 采用 generate 循环例化，消除手写重复连线

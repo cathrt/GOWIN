@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 /*
 PWM波形发生器模块
 功能：

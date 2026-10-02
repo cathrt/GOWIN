@@ -9,18 +9,18 @@ module adc_clk (
     output wire clk_adc
 );
 
-reg [1:0] cnt;
-// 每个时钟上升沿改变一次，[1]位两个上升沿变化一次
-always @(posedge clk or negedge rst_n) begin
-    if (!rst_n)
-        cnt <= 2'b00;
-    else
-        cnt <= cnt + 1'b1;
-end
+    reg [1:0] cnt;
+    // 每个时钟上升沿改变一次，[1]位两个上升沿变化一次
+    always @(posedge clk or negedge rst_n) begin
+        if (!rst_n)
+            cnt <= 2'b00;
+        else
+            cnt <= cnt + 1'b1;
+    end
 
-// cnt 的变化规律: 00 -> 01 -> 10 -> 11
-// cnt[1] 的电平:   0  ->  0  ->  1  ->  1 (完美 4分频方波)
-assign clk_adc = cnt[1];
+    // cnt 的变化规律: 00 -> 01 -> 10 -> 11
+    // cnt[1] 的电平:   0  ->  0  ->  1  ->  1 (完美 4分频方波)
+    assign clk_adc = cnt[1];
 
 endmodule
 

@@ -1,3 +1,4 @@
+`timescale 1ns/1ps
 /*
 角速度生成模块
 功能：
