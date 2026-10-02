@@ -47,24 +47,23 @@ module tb_adc;
     );
 
     adc # (
-    .WIDTH_DATA(WIDTH_DATA),
-    .DEFAULT_OFFSET(DEFAULT_OFFSET),
-    .LPF_SHIFT(LPF_SHIFT)
-  )
-  adc_inst (
-    .clk(clk),
-    .rst_n(rst_n),
-    .ctrl_tick(ctrl_tick),
-    .key_calib(key_calib),
-    .ad_oe(ad_oe),
-    .ad_clk(ad_clk),
-    .ad_data(ad_data),
-    .target_pend(target_pend),
-    .pos_pend(pos_pend),
-    .vel_pend(vel_pend),
-    .angle_err(angle_err),
-    .calib_done(calib_done)
-  );
+        .WIDTH_DATA(WIDTH_DATA),
+        .DEFAULT_OFFSET(DEFAULT_OFFSET),
+        .LPF_SHIFT(LPF_SHIFT)
+    ) adc_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .ctrl_tick(ctrl_tick),
+        .key_calib(key_calib),
+        .ad_oe(ad_oe),
+        .ad_clk(ad_clk),
+        .ad_data(ad_data),
+        .target_pend(target_pend),
+        .pos_pend(pos_pend),
+        .vel_pend(vel_pend),
+        .angle_err(angle_err),
+        .calib_done(calib_done)
+    );
 
     // 时钟生成：50MHz 主时钟 (周期 20ns)
     initial begin

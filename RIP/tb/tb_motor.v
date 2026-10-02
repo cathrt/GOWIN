@@ -24,17 +24,16 @@ module tb_motor;
 
     // 例化
     motor # (
-    .DUTY_MAX(DUTY_MAX)
-  )
-  motor_inst (
-    .clk(clk),
-    .rst_n(rst_n),
-    .duty_signed(duty_signed),
-    .motor_stop(motor_stop),
-    .ain1(ain1),
-    .ain2(ain2),
-    .pwm_out(pwm_out)
-  );
+        .DUTY_MAX(DUTY_MAX)
+    ) motor_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .duty_signed(duty_signed),
+        .motor_stop(motor_stop),
+        .ain1(ain1),
+        .ain2(ain2),
+        .pwm_out(pwm_out)
+    );
 
     // 时钟生成：50MHz 主时钟 (周期 20ns)
     initial begin

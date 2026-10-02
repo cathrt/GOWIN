@@ -27,21 +27,20 @@ module tb_control;
 
     // 例化
     control # (
-    .WIDTH_DATA(WIDTH_DATA),
-    .ANGLE_SWITCH(ANGLE_SWITCH)
-  )
-  control_inst (
-    .clk(clk),
-    .rst_n(rst_n),
-    .key_open(key_open),
-    .stop_sig(stop_sig),
-    .calib_done(calib_done),
-    .pos_pend(pos_pend),
-    .lqr_en(lqr_en),
-    .swing_en(swing_en),
-    .pos_clr(pos_clr),
-    .state_out(state_out)
-  );
+        .WIDTH_DATA(WIDTH_DATA),
+        .ANGLE_SWITCH(ANGLE_SWITCH)
+    ) control_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .key_open(key_open),
+        .stop_sig(stop_sig),
+        .calib_done(calib_done),
+        .pos_pend(pos_pend),
+        .lqr_en(lqr_en),
+        .swing_en(swing_en),
+        .pos_clr(pos_clr),
+        .state_out(state_out)
+    );
 
     // 时钟生成：50MHz 主时钟 (周期 20ns)
     initial begin

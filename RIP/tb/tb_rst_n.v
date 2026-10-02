@@ -11,9 +11,9 @@ module tb_rst_n;
     wire rst_n;
 
     rst_n_sync  rst_n_sync_inst (
-    .rstn(rstn),
-    .clk(clk),
-    .rst_n(rst_n)
+        .rstn(rstn),
+        .clk(clk),
+        .rst_n(rst_n)
     );
 
     initial begin

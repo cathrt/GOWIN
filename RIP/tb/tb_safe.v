@@ -33,25 +33,24 @@ module tb_safe;
 
     // 例化
     safe_motor # (
-    .WIDTH_DATA(WIDTH_DATA),
-    .PROTECT_PEND(PROTECT_PEND),
-    .PROTECT_ARM(PROTECT_ARM),
-    .PROTECT_MOTOR(PROTECT_MOTOR),
-    .CLK_F(CLK_F)
-  )
-  safe_motor_inst (
-    .clk(clk),
-    .rst_n(rst_n),
-    .lqr_en(lqr_en),
-    .stop_key(stop_key),
-    .pos_pend(pos_pend),
-    .target_pend(target_pend),
-    .pos_arm(pos_arm),
-    .sat_pos(sat_pos),
-    .sat_neg(sat_neg),
-    .stop_sig(stop_sig),
-    .stop_code(stop_code)
-  );
+        .WIDTH_DATA(WIDTH_DATA),
+        .PROTECT_PEND(PROTECT_PEND),
+        .PROTECT_ARM(PROTECT_ARM),
+        .PROTECT_MOTOR(PROTECT_MOTOR),
+        .CLK_F(CLK_F)
+    ) safe_motor_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .lqr_en(lqr_en),
+        .stop_key(stop_key),
+        .pos_pend(pos_pend),
+        .target_pend(target_pend),
+        .pos_arm(pos_arm),
+        .sat_pos(sat_pos),
+        .sat_neg(sat_neg),
+        .stop_sig(stop_sig),
+        .stop_code(stop_code)
+    );
 
     // 时钟生成：50MHz 主时钟 (周期 20ns)
     initial begin

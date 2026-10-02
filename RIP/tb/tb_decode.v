@@ -38,18 +38,17 @@ module tb_decode;
     );
 
     decode_cnt # (
-    .WIDTH_DATA(WIDTH_DATA)
-  )
-  decode_cnt_inst (
-    .clk(clk),
-    .rst_n(rst_n),
-    .pos_clr(pos_clr),
-    .ctrl_tick(ctrl_tick),
-    .encode_pulse(encode_pulse),
-    .motor_dir(motor_dir),
-    .cur_pos(cur_pos),
-    .pos_arm(pos_arm)
-  );
+        .WIDTH_DATA(WIDTH_DATA)
+    ) decode_cnt_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .pos_clr(pos_clr),
+        .ctrl_tick(ctrl_tick),
+        .encode_pulse(encode_pulse),
+        .motor_dir(motor_dir),
+        .cur_pos(cur_pos),
+        .pos_arm(pos_arm)
+    );
 
     // 时钟生成：50MHz 主时钟 (周期 20ns)
     initial begin

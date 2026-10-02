@@ -17,13 +17,13 @@ module tb_key;
 
 	// 例化
     key_debounce # (
-    .CNT_MAX(10)    //将原先的20MS 缩小为 10*20ns，即10拍一直低电平即认为按键按下，防止仿真占用太多时间
-  ) uut (
-    .clk(clk),
-    .rst_n(rst_n),
-    .key_in(key_in),
-    .key_pulse(key_pulse)
-  );
+        .CNT_MAX(10)    //将原先的20MS 缩小为 10*20ns，即10拍一直低电平即认为按键按下，防止仿真占用太多时间
+    ) key_debounce_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .key_in(key_in),
+        .key_pulse(key_pulse)
+    );
 
     // 时钟生成 (周期 20ns)
     initial begin
