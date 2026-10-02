@@ -5,7 +5,7 @@ module top (
     input  wire rstn,
 
     // 与按键接口
-    input  wire [2:0] key_in,   // 4 路按键输入
+    input  wire [3:0] key_in,   // 4 路按键输入
 
     // 与 ADC 接口 
     output wire ad_clk,         // 12.5MHz 的 ADC 驱动时钟
@@ -27,7 +27,7 @@ module top (
 
     // 参数统一定义
     localparam integer WIDTH_DATA     = 16;           // 状态位宽 (Q16.0)
-    localparam integer KEY_NUM        = 3;            // 按键数量
+    localparam integer KEY_NUM        = 4;            // 按键数量
     localparam integer CLK_F          = 50_000_000;   // 主时钟频率
     localparam integer CTRL_F         = 1_000;        // 控制节拍频率 (1ms)
     localparam integer DEFAULT_OFFSET = 512;          // 默认零位偏置 (10位ADC中心值 0~1023)
@@ -36,7 +36,10 @@ module top (
     localparam integer WIDTH_K        = 32;           // 增益参数位宽 (Q16.16)
     localparam integer SHIFT_Q        = 16;           // 定点数还原右移位数
     localparam integer DUTY_MAX       = 2500;         // 20kHz PWM 最大满幅计数值
-    localparam integer DEAD_ZONE      = 50;          // 电机死区补偿值
+
+    // 死区补偿参数，经测量为260，少取一点为240，剩下的交给增益参数
+    localparam integer DEAD_ZONE      = 240;          // 电机死区补偿值，测死区时设为0
+//    localparam integer STEP_TIME      = 20;           // 死区测试每 20ms 步进 1 占空比
 
     // 安全保护阈值参数
     localparam integer PROTECT_PEND   = 57;           // 摆杆跌倒限幅 (约 20°)
@@ -87,6 +90,17 @@ module top (
     wire sat_pos;                               // 正向满占空比标志（调试用）
     wire sat_neg;                               // 反向满占空比标志（调试用）
 
+    // 死区检测信号
+    wire signed [WIDTH_DATA-1:0] duty_test;
+    wire signed [WIDTH_DATA-1:0] dead_zone_val;
+    wire test_done;
+/*    
+    // 电机驱动输入（死区测试模式）
+    // 当前处于死区测试模式：使用 duty_test，并在测试完成瞬间封波停机
+    wire signed [12:0] duty_signed = duty_test[12:0];
+    // 测出死区后立即锁死电机输出，防止机械臂加速甩动  同时  保证安全保护
+    wire motor_stop = test_done | stop_sig; 
+*/
     // 电机驱动输入
     // 目前起摆模块尚未接入，处于 LQR 使能时送出算法输出，其余时间强制送 0
     wire signed [12:0] duty_signed = lqr_en ? u_lqr[12:0] : 16'sd0;
@@ -240,5 +254,21 @@ module top (
         .ain2(ain2),
         .pwm_out(pwm_out)
     );
-
+/*
+    // 10. 死区检测模块
+    dead_zone_test # (
+        .WIDTH_DATA(WIDTH_DATA),
+        .DUTY_MAX(DUTY_MAX),
+        .STEP_TIME(STEP_TIME)
+    ) dead_zone_test_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .ctrl_tick(ctrl_tick),
+        .key_dead(key_pulse[3]),        // 按键 4 开启死区
+        .pos_arm(pos_arm),
+        .duty_test(duty_test),
+        .dead_zone_val(dead_zone_val),
+        .test_done(test_done)
+    );
+*/
 endmodule

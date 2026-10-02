@@ -13,6 +13,7 @@
         <File path="src/adc_top.v" type="file.verilog" enable="0"/>
         <File path="src/control.v" type="file.verilog" enable="1"/>
         <File path="src/ctrl_clk.v" type="file.verilog" enable="1"/>
+        <File path="src/dead_zone_test.v" type="file.verilog" enable="1"/>
         <File path="src/decode.v" type="file.verilog" enable="1"/>
         <File path="src/decode_cnt.v" type="file.verilog" enable="1"/>
         <File path="src/decode_sync.v" type="file.verilog" enable="1"/>
@@ -30,8 +31,9 @@
         <File path="src/top.v" type="file.verilog" enable="1"/>
         <File path="src/pin.cst" type="file.cst" enable="1"/>
         <File path="src/timing.sdc" type="file.sdc" enable="1"/>
-        <File path="src/RIP.rao" type="file.gao" enable="1"/>
+        <File path="src/RIP.rao" type="file.gao" enable="0"/>
         <File path="src/adc.rao" type="file.gao" enable="0"/>
+        <File path="src/dead_zone.rao" type="file.gao" enable="1"/>
         <File path="src/decode.rao" type="file.gao" enable="0"/>
     </FileList>
 </Project>
