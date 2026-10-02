@@ -21,6 +21,9 @@ module top (
     output wire ain2,           // 电机方向控制 2
     output wire pwm_out,        // 20kHz 电机调速 PWM 脉冲
 
+    // 串口输出
+    output wire tx_data_out,    // 串口发送管脚
+
     // 板载状态指示调试接口 (选接 LED)
     output wire [3:0] led       // 板载 LED 指示灯
 );
@@ -37,6 +40,16 @@ module top (
     localparam integer SHIFT_Q        = 16;           // 定点数还原右移位数
     localparam integer DUTY_MAX       = 2500;         // 20kHz PWM 最大满幅计数值
 
+    // 串口通信相关参数
+    localparam integer WIDTH_BYTE     = 8;		      // 字节位宽
+    localparam integer DECIM_N        = 8;            // 8 分频，用于降低数据打包频率
+    localparam  integer BPS           = 115200;       // 串口波特率
+	// VOFA+ 协议帧尾
+    localparam [WIDTH_BYTE-1:0] TAIL_BYTE0 = 8'h00;
+    localparam [WIDTH_BYTE-1:0] TAIL_BYTE1 = 8'h00;
+    localparam [WIDTH_BYTE-1:0] TAIL_BYTE2 = 8'h80;
+    localparam [WIDTH_BYTE-1:0] TAIL_BYTE3 = 8'h7F;
+
     // 死区补偿参数，经测量为260，少取一点为240，剩下的交给增益参数
     localparam integer DEAD_ZONE      = 240;          // 电机死区补偿值，测死区时设为0
 //    localparam integer STEP_TIME      = 20;           // 死区测试每 20ms 步进 1 占空比
@@ -46,7 +59,7 @@ module top (
     localparam integer PROTECT_ARM    = 3120;         // 旋臂超程限幅 (3 圈)
     localparam integer PROTECT_MOTOR  = 1;            // 电机持续满幅保护时间 (1s)
 
-    // LQR 增益参数 (Q16.16 格式，后续整定直接在此修改)
+    // LQR 增益参数 (Q16.16 格式)
     localparam signed [WIDTH_K-1:0] k1 = 32'sd10;      // 水平臂位置增益
     localparam signed [WIDTH_K-1:0] k2 = 32'sd10;      // 水平臂速度阻尼
     localparam signed [WIDTH_K-1:0] k3 = 32'sd10;      // 垂直摆杆角度刚度
@@ -89,12 +102,12 @@ module top (
     wire signed [WIDTH_DATA-1:0] u_lqr;         // LQR 计算输出
     wire sat_pos;                               // 正向满占空比标志（调试用）
     wire sat_neg;                               // 反向满占空比标志（调试用）
-
+/*
     // 死区检测信号
     wire signed [WIDTH_DATA-1:0] duty_test;
     wire signed [WIDTH_DATA-1:0] dead_zone_val;
     wire test_done;
-/*    
+    
     // 电机驱动输入（死区测试模式）
     // 当前处于死区测试模式：使用 duty_test，并在测试完成瞬间封波停机
     wire signed [12:0] duty_signed = duty_test[12:0];
@@ -271,4 +284,29 @@ module top (
         .test_done(test_done)
     );
 */
+
+    // 11. 串口发送模块
+    uart_tx_top # (
+        .WIDTH_DATA(WIDTH_DATA),
+        .WIDTH_BYTE(WIDTH_BYTE),
+        .DECIM_N(DECIM_N),
+        .TAIL_BYTE0(TAIL_BYTE0),
+        .TAIL_BYTE1(TAIL_BYTE1),
+        .TAIL_BYTE2(TAIL_BYTE2),
+        .TAIL_BYTE3(TAIL_BYTE3),
+        .BPS(BPS),
+        .CLK_F(CLK_F)
+    ) uart_tx_top_inst (
+        .clk(clk),
+        .rst_n(rst_n),
+        .uart_en(1'b1),
+        .ctrl_tick(ctrl_tick),
+        .pos_pend(pos_pend),
+        .vel_pend(vel_pend),
+        .pos_arm(pos_arm),
+        .vel_arm(vel_arm),
+        .duty_signed(duty_signed),
+        .tx_data_out(tx_data_out)
+    );
+
 endmodule

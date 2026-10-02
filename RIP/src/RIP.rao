@@ -18,24 +18,6 @@
             </Bus>
             <Signal capture_enable="true">stop_sig</Signal>
             <Signal capture_enable="true">motor_stop</Signal>
-            <Bus capture_enable="true" name="pos_pend[15:0]">
-                <Signal>pos_pend[15]</Signal>
-                <Signal>pos_pend[14]</Signal>
-                <Signal>pos_pend[13]</Signal>
-                <Signal>pos_pend[12]</Signal>
-                <Signal>pos_pend[11]</Signal>
-                <Signal>pos_pend[10]</Signal>
-                <Signal>pos_pend[9]</Signal>
-                <Signal>pos_pend[8]</Signal>
-                <Signal>pos_pend[7]</Signal>
-                <Signal>pos_pend[6]</Signal>
-                <Signal>pos_pend[5]</Signal>
-                <Signal>pos_pend[4]</Signal>
-                <Signal>pos_pend[3]</Signal>
-                <Signal>pos_pend[2]</Signal>
-                <Signal>pos_pend[1]</Signal>
-                <Signal>pos_pend[0]</Signal>
-            </Bus>
             <Bus capture_enable="true" name="target_pend[15:0]">
                 <Signal>target_pend[15]</Signal>
                 <Signal>target_pend[14]</Signal>
@@ -53,6 +35,24 @@
                 <Signal>target_pend[2]</Signal>
                 <Signal>target_pend[1]</Signal>
                 <Signal>target_pend[0]</Signal>
+            </Bus>
+            <Bus capture_enable="true" name="pos_pend[15:0]">
+                <Signal>pos_pend[15]</Signal>
+                <Signal>pos_pend[14]</Signal>
+                <Signal>pos_pend[13]</Signal>
+                <Signal>pos_pend[12]</Signal>
+                <Signal>pos_pend[11]</Signal>
+                <Signal>pos_pend[10]</Signal>
+                <Signal>pos_pend[9]</Signal>
+                <Signal>pos_pend[8]</Signal>
+                <Signal>pos_pend[7]</Signal>
+                <Signal>pos_pend[6]</Signal>
+                <Signal>pos_pend[5]</Signal>
+                <Signal>pos_pend[4]</Signal>
+                <Signal>pos_pend[3]</Signal>
+                <Signal>pos_pend[2]</Signal>
+                <Signal>pos_pend[1]</Signal>
+                <Signal>pos_pend[0]</Signal>
             </Bus>
             <Bus capture_enable="true" name="angle_err[15:0]">
                 <Signal>angle_err[15]</Signal>
