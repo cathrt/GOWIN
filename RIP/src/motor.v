@@ -7,7 +7,7 @@
 */
 module motor #(
 	parameter integer DUTY_MAX  = 2500,
-    parameter integer DEAD_ZONE = 
+    parameter integer DEAD_ZONE = 0
 ) (
     input  wire clk,
     input  wire rst_n,

@@ -35,7 +35,7 @@ module motor_control #(
             motor_dir <= 1'b0;
         end else begin
             // 限幅，最大为 2500
-            duty_unsigned <= (duty_actual > DUTY_MAX) ? DUTY_MAX : duty_actual[11:0]; 
+            duty_unsigned <= (duty_signed > DUTY_MAX) ? DUTY_MAX : duty_signed[11:0]; 
             // 控制正反转
             if (duty_signed[12] == 1'b0) begin  //正转
                 motor_dir <= 1'b0;

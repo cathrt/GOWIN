@@ -7,10 +7,10 @@ IO_LOC  "rstn"        AB3;
 IO_PORT "rstn"        IO_TYPE=LVCMOS33 PULL_MODE=UP BANK_VCCIO=3.3;
 
 // 4个按键引脚(所在 Bank 为 1.5V 供电)
-/*
+
 IO_LOC "key_in[3]" T20;
 IO_PORT "key_in[3]" IO_TYPE=LVCMOS15 PULL_MODE=UP BANK_VCCIO=1.5;
-*/
+
 IO_LOC "key_in[2]" U20;
 IO_PORT "key_in[2]" IO_TYPE=LVCMOS15 PULL_MODE=UP BANK_VCCIO=1.5;
 

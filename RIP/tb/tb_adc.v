@@ -12,6 +12,8 @@ module tb_adc;
     localparam integer DEFAULT_OFFSET = 512;
     localparam integer LPF_SHIFT      = 2;
     localparam integer CLK_PERIOD     = 20;
+    localparam integer CLK_F          = 50_000_000;
+    localparam integer CTRL_F         = 1_000_000;   // 将 1ms 缩小到 50*20ns = 1us
 
     // 时钟激励
     reg clk;            // 50MHz 系统主频 (周期 20ns)
@@ -36,8 +38,8 @@ module tb_adc;
 
     // 例化
     ctrl_clk #(
-        .CLK_F (50_000_000), 
-        .CTRL_F(1_000_000)        // 将 1ms 缩小到 50*20ns = 1us
+        .CLK_F (CLK_F), 
+        .CTRL_F(CTRL_F)       
     ) u_ctrl_clk (
         .clk      (clk),
         .rst_n    (rst_n),
